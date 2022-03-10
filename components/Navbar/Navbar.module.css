@@ -1,0 +1,69 @@
+.navbar {
+	position: absolute;
+	top: 0;
+	height: 75px;
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-bottom: rgba(0, 0, 0, 0.05) 1px solid;
+}
+
+.navbar .navbarContainer {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+}
+
+.navbar .navbarContainer .mobile {
+	display: none;
+}
+
+.navbar .navbarContainer .navbarLink {
+	text-decoration: none;
+	padding: 0 30px;
+	width: 140px;
+	box-sizing: border-box;
+	color: #5c5c5c;
+	text-transform: uppercase;
+}
+
+.navbar .navbarContainer .navbarLinks {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.navbar .navbarContainer .navbarLinks .navbarPageLinks .navbarLink:hover,
+.navbar .navbarContainer .navbarLinks .navbarPageLinks .navbarLink.active {
+	color: #000;
+	font-weight: bold;
+}
+
+.navbar .navbarContainer .navbarSocialIcons {
+	width: 100px;
+}
+
+.navbar .navbarBurger {
+	display: flex;
+	justify-content: flex-end;
+	padding-right: 15px;
+}
+
+@media only screen and (max-width: 800px) {
+	.navbar .navbarContainer .mobile {
+		display: initial;
+		justify-self: flex-end;
+		width: 75px;
+	}
+
+	.navbar .navbarContainer .navbarLinks.web {
+		display: none;
+	}
+
+	.navbar .navbarContainer .navbarLink {
+		padding: 0 15px;
+	}
+}
