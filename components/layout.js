@@ -1,4 +1,4 @@
-import Navbar from './Navbar/tempn';
+import Navbar from './Navbar/Navbar';
 
 export default function Layout({ children }) {
 	return (

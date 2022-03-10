@@ -1,0 +1,332 @@
+[
+	{
+		"module-name": "CALCULUS I",
+		"credits": "4",
+		"akts": "5",
+		"module-id": "152111017"
+	},
+	{
+		"module-name": "TÜRK DİLİ I",
+		"credits": "0",
+		"akts": "2",
+		"module-id": "152111004"
+	},
+	{
+		"module-name": "PHYSICS I",
+		"credits": "3",
+		"akts": "3",
+		"module-id": "152111005"
+	},
+	{
+		"module-name": "PHYSICS I LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152111006"
+	},
+	{
+		"module-name": "ENGINEERING GRAPHICS",
+		"credits": "2",
+		"akts": "3",
+		"module-id": "152111018"
+	},
+	{
+		"module-name": "INTRODUCTION TO PROGRAMMING",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152111019"
+	},
+	{
+		"module-name": "INTRODUCTION TO PROGRAMMING LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152111011"
+	},
+	{
+		"module-name": "INTRODUCTION TO COMPUTER ENGINEERING",
+		"credits": "2",
+		"akts": "3",
+		"module-id": "152111012"
+	},
+	{
+		"module-name": "ADVANCED READING AND WRITING",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152111013"
+	},
+	{
+		"module-name": "ATATÜRK İLKELERİ VE İNKILAP TARİHİ I",
+		"credits": "2",
+		"akts": "2",
+		"module-id": "151011208"
+	},
+	{
+		"module-name": "CALCULUS II",
+		"credits": "4",
+		"akts": "5",
+		"module-id": "152112017"
+	},
+	{
+		"module-name": "TÜRK DİLİ II",
+		"credits": "0",
+		"akts": "2",
+		"module-id": "152112004"
+	},
+	{
+		"module-name": "PHYSICS II",
+		"credits": "3",
+		"akts": "3",
+		"module-id": "152112005"
+	},
+	{
+		"module-name": "PHYSICS II LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152112006"
+	},
+	{
+		"module-name": "LINEAR ALGEBRA",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152112009"
+	},
+	{
+		"module-name": "COMPUTER PROGRAMMING",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152112016"
+	},
+	{
+		"module-name": "COMPUTER PROGRAMMING LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152112011"
+	},
+	{
+		"module-name": "DISCRETE COMPUTATIONAL STRUCTURES",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152112014"
+	},
+	{
+		"module-name": "ATATÜRK İLKELERİ VE İNKILAP TARİHİ II",
+		"credits": "2",
+		"akts": "2",
+		"module-id": "151012209"
+	},
+	{
+		"module-name": "DIFFERENTIAL EQUATIONS",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152113019"
+	},
+	{
+		"module-name": "SAYISAL TASARIM",
+		"credits": "4",
+		"akts": "6",
+		"module-id": "152113020"
+	},
+	{
+		"module-name": "VERİ YAPILARI",
+		"credits": "2",
+		"akts": "3",
+		"module-id": "152113021"
+	},
+	{
+		"module-name": "VERİ YAPILARI LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152113022"
+	},
+	{
+		"module-name": "NESNE TABANLI PROGRAMLAMA I",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152113017"
+	},
+	{
+		"module-name": "NESNE TABANLI PROGRAMLAMA I LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152113018"
+	},
+	{
+		"module-name": "NUMERICAL METHODS",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152113023"
+	},
+	{
+		"module-name": "İŞ SAĞLIĞI VE GÜVENLİĞİ I",
+		"credits": "2",
+		"akts": "3",
+		"module-id": "152113024"
+	},
+	{
+		"module-name": "FUNDAMENTALS OF ELECTRONICS",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152114004"
+	},
+	{
+		"module-name": "SAYISAL TASARIM LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152114020"
+	},
+	{
+		"module-name": "BİÇİMSEL DİLLER VE OTOMATA",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152114012"
+	},
+	{
+		"module-name": "OBJECT ORIENTED PROGRAMMING II",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152114013"
+	},
+	{
+		"module-name": "OBJECT ORIENTED PROGRAMMING II LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152114014"
+	},
+	{
+		"module-name": "ALGORITHMS AND COMPLEXITY",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152114015"
+	},
+	{
+		"module-name": "PROBABILITY",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152114021"
+	},
+	{
+		"module-name": "İŞ SAĞLIĞI VE GÜVENLİĞİ II",
+		"credits": "2",
+		"akts": "3",
+		"module-id": "152114022"
+	},
+	{
+		"module-name": "INTRODUCTION TO MICROCOMPUTERS",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152115024"
+	},
+	{
+		"module-name": "INTRODUCTION TO MICROCOMPUTERS LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152115025"
+	},
+	{
+		"module-name": "VERİ TABANI YÖNETİM SİSTEMLERİ",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152115016"
+	},
+	{
+		"module-name": "VERİ TABANI YÖNETİM SİSTEMLERİ LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152115018"
+	},
+	{
+		"module-name": "YAZILIM MÜHENDİSLİĞİ",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152115026"
+	},
+	{
+		"module-name": "İŞLETİM SİSTEMLERİNE GİRİŞ",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152116022"
+	},
+	{
+		"module-name": "İŞLETİM SİSTEMLERİNE GİRİŞ LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152116023"
+	},
+	{
+		"module-name": "GİRİŞİMCİLİK",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152116024"
+	},
+	{
+		"module-name": "TASARIM SÜREÇLERİ",
+		"credits": "3",
+		"akts": "7",
+		"module-id": "152116025"
+	},
+	{
+		"module-name": "BİLGİSAYAR MİMARİSİ",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152116026"
+	},
+	{
+		"module-name": "BİLGİSAYAR AĞLARI",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152116027"
+	},
+	{
+		"module-name": "BİLGİSAYAR AĞLARI LAB",
+		"credits": "1",
+		"akts": "2",
+		"module-id": "152116028"
+	},
+	{
+		"module-name": "ECONOMICS",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152117114"
+	},
+	{
+		"module-name": "FOTOĞRAFÇILIK VE MEDYA",
+		"credits": "3",
+		"akts": "4",
+		"module-id": "152116029"
+	},
+	{
+		"module-name": "DATA SECURITY",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152117003"
+	},
+	{
+		"module-name": "NETWORK APPLICATIONS",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152118035"
+	},
+	{
+		"module-name": "NEURAL NETWORKS",
+		"credits": "3",
+		"akts": "5",
+		"module-id": "152118003"
+	},
+	{
+		"module-name": "MOBİL PROGRAMLAMA",
+		"credits": "3",
+		"akts": "7",
+		"module-id": "152117111"
+	},
+	{
+		"module-name": "Problems in Data Structures and Algorithms",
+		"credits": "3",
+		"akts": "7",
+		"module-id": "152117120"
+	},
+	{
+		"module-name": "ENGINEERING RESEARCH ON WIRELESS NETWORKS",
+		"credits": "3",
+		"akts": "6",
+		"module-id": "152117124"
+	}
+]

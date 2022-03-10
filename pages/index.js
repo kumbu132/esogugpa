@@ -1,10 +1,11 @@
 //TO-DO
 //Header will have add ders, remove ders, ders sayi, question mark for help, and language settings
-
+import { useModules } from '../context/context';
 import Head from 'next/head';
-import Hero from '../components/Hero/Hero';
-import Calculate from '../components/Calculate/Calculate';
+import ModuleCard from '../components/ModuleCard/ModuleCard';
 export default function Home() {
+	const { selectedModules } = useModules();
+
 	return (
 		<div className="wrapper max-w-screen-md ">
 			<Head>
@@ -18,9 +19,20 @@ export default function Home() {
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
 				}}
-				className="h-screen w-full"
+				className="h-screen w-full mt-[60px]"
 			>
-				MOBILE FIRST
+				{selectedModules.map((module) => (
+					<ModuleCard
+						key={module.id}
+						id={module.id}
+						moduleID={module.moduleID}
+						moduleName={module.moduleName}
+						credits={module.credits}
+						grade={module.grade}
+						akts={module.akts}
+						isComplete={module.complete}
+					/>
+				))}
 			</main>
 		</div>
 	);
