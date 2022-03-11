@@ -1,72 +1,39 @@
-import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import Image from 'next/image';
-import Link from 'next/link';
-import navbarTabs from './navbarTabs.json';
-import styles from './Navbar.module.css';
-import NavbarModal from './NavbarModal';
+import { useModules } from '../../context/context';
+import { PlusSquareOutlined, MinusSquareOutlined } from '@ant-design/icons';
+const Navbar = () => {
+	const { selectedModules, handleIncreaseModules, handleDecreaseModules } =
+		useModules();
+	console.log(selectedModules);
 
-export default function Navbar() {
-	const [activeTab, setActiveTab] = useState('portfolio');
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const handleNavClick = (tabName) => {
-		setActiveTab(tabName);
-	};
-
-	const handleBurgerClick = () => {
-		setModalIsOpen(!modalIsOpen);
-	};
-	const router = useRouter();
-
-	useEffect(() => {
-		return () => {
-			setActiveTab(router.pathname.substring(1));
-			console.log('NextRouter: ->', router, activeTab);
-		};
-	}, []);
 	return (
-		<div className={styles.navbar}>
-			{modalIsOpen && (
-				<NavbarModal
-					activeTab={activeTab}
-					handleCloseClick={handleBurgerClick}
-					handleNavClick={handleNavClick}
-				/>
-			)}
-			<div className={styles.navbarContainer}>
-				<Link href="/">
-					<a className={styles.navbarLink}>
-						<div className={styles.navbarLogo}>LOGO</div>
-					</a>
-				</Link>
-				<div className={`${styles.navbarLinks} ${styles.web}`}>
-					<div className={styles.navbarPageLinks}>
-						{navbarTabs.map((tab, idx) => (
-							<Link key={idx} href={tab.url}>
-								<a
-									className={`${styles.navbarLink} ${
-										tab.name === activeTab ? styles.active : ''
-									}`}
-									onClick={() => handleNavClick(tab.name)}
-								>
-									{tab.name}
-								</a>
-							</Link>
-						))}
+		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 border-b-1 border-solid border-gray-500 z-10 ">
+			<div className="navbar-container flex justify-between items-center h-full w-full px-2 max-w-screen-md">
+				<div className="number-of-modules-controls-wrapper flex justify-between items-center w-[55%]">
+					<div className="number-of-modules-buttons-wrapper flex justify-center items-center ">
+						<button
+							className="flex justify-center items-center w-5 h-5 mx-1"
+							onClick={() => handleDecreaseModules()}
+						>
+							<MinusSquareOutlined />
+						</button>
+						<button
+							className="flex justify-center items-center w-5 h-5 mx-1"
+							onClick={() => handleIncreaseModules()}
+						>
+							<PlusSquareOutlined />
+						</button>
+					</div>
+					<div className="number-of-modules-text">
+						Number of courses: {selectedModules.length}
 					</div>
 				</div>
-				<div className={styles.mobile}>
-					<div className={styles.navbarBurger} onClick={handleBurgerClick}>
-						<Image
-							src="/images/svg/hamburger.svg"
-							alt="menu"
-							className={styles.hamburger}
-							width="20"
-							height="20"
-						/>
-					</div>
+				<div className="language-and-help-buttons-wrapper flex justify-center items-center">
+					<button className="flex justify-center items-center w-5 h-5 mx-2" />
+					<button className="flex justify-center items-center w-5 h-5 mx-2" />
 				</div>
 			</div>
-		</div>
+		</nav>
 	);
-}
+};
+
+export default Navbar;

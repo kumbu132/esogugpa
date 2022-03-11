@@ -9,8 +9,21 @@
 	padding: 0;
 	margin: 0;
 	font-family: 'Lato', sans-serif;
+	box-sizing: border-box;
 }
 
 .wrapper {
 	margin: 0 auto;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+	-ms-overflow-style: none; /* IE and Edge */
+	scrollbar-width: none; /* Firefox */
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+	display: none;
 }
