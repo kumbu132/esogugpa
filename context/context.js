@@ -7,7 +7,7 @@ export function ModulesProvider({ children }) {
 	const [selectedModules, setSelectedModules] = useState([]);
 	const [gpa, setGPA] = useState(3.1);
 	const [modalIsOpen, setIsOpen] = useState(false);
-	const [caluclateIsClicked, setCalculateIsClicked] = useState(false);
+	const [calculateIsClicked, setCalculateIsClicked] = useState(false);
 
 	const handleIncreaseModules = () => {
 		setCalculateIsClicked(false);
@@ -20,13 +20,13 @@ export function ModulesProvider({ children }) {
 			credits: 0,
 			akts: '',
 			grade: '',
-			complete: true,
+			complete: false,
 		};
 		setSelectedModules((prevArray) => [...prevArray, newModuleCard]);
 	};
 
 	const handleDecreaseModules = (deleteWasPressed = false) => {
-		// setCalculateIsClicked(false)
+		setCalculateIsClicked(false);
 
 		if (selectedModules.length) {
 			if (!deleteWasPressed) {
@@ -49,7 +49,7 @@ export function ModulesProvider({ children }) {
 	const changeSelectedModules = (id, module) => {
 		var newModulesArray = selectedModules.map((ders) => {
 			if (ders.id === id) {
-				if (caluclateIsClicked && ders.grade === '') {
+				if (calculateIsClicked && ders.grade === '') {
 					return {
 						...ders,
 						moduleID: module.moduleID,
@@ -58,7 +58,7 @@ export function ModulesProvider({ children }) {
 						akts: module.akts,
 						complete: false,
 					};
-				} else if (caluclateIsClicked && ders.grade !== '') {
+				} else if (calculateIsClicked && ders.grade !== '') {
 					return {
 						...ders,
 						moduleID: module.moduleID,
@@ -80,20 +80,19 @@ export function ModulesProvider({ children }) {
 			return { ...ders };
 		});
 
-		console.log(newModulesArray);
 		setSelectedModules(newModulesArray);
 	};
 
 	const changeSelectedModuleGrade = (id, module) => {
 		var updatedSelectedModules = selectedModules.map((ders) => {
 			if (ders.id === id) {
-				if (caluclateIsClicked && ders.moduleName === '') {
+				if (calculateIsClicked && ders.moduleName === '') {
 					return {
 						...ders,
 						grade: module.grade,
 						complete: false,
 					};
-				} else if (caluclateIsClicked && ders.moduleName !== '') {
+				} else if (calculateIsClicked && ders.moduleName !== '') {
 					return {
 						...ders,
 						grade: module.grade,
@@ -137,38 +136,41 @@ export function ModulesProvider({ children }) {
 	};
 
 	const calculateGPA = () => {
-		var totalCredits = 0;
-		var totalScore = 0;
-		var calculate = true;
-		setCalculateIsClicked(true);
-		//CHECK IF ALL FIELDS FILLED
-		selectedModules.forEach((module) => {
-			if (module.moduleID === '' || module.grade === '') {
-				calculate = false;
-			}
-		});
+		if (selectedModules.length) {
+			var totalCredits = 0;
+			var totalScore = 0;
+			var calculate = true;
+			setCalculateIsClicked(true);
 
-		if (calculate) {
+			//CHECK IF ALL FIELDS FILLED
 			selectedModules.forEach((module) => {
-				totalCredits += Number(module.credits);
-				if (module.grade !== '') {
-					totalScore +=
-						Number(module.credits) * getLetterNoteWeight(module.grade);
+				if (module.moduleID === '' || module.grade === '') {
+					calculate = false;
 				}
 			});
 
-			setGPA(totalScore / totalCredits);
-			openModal();
-		} else {
-			var newModulesArray = modules;
-			newModulesArray.forEach((ders) => {
-				if (ders.grade === '' || ders.moduleName === '') {
-					ders.complete = false;
-				} else {
-					ders.complete = true;
-				}
-			});
-			setSelectedModules(newModulesArray);
+			if (calculate) {
+				selectedModules.forEach((module) => {
+					totalCredits += Number(module.credits);
+					if (module.grade !== '') {
+						totalScore +=
+							Number(module.credits) * getLetterNoteWeight(module.grade);
+					}
+				});
+
+				setGPA(totalScore / totalCredits);
+				openModal();
+			} else {
+				var newModulesArray = selectedModules;
+				newModulesArray.forEach((ders) => {
+					if (ders.grade === '' || ders.moduleName === '') {
+						ders.complete = false;
+					} else {
+						ders.complete = true;
+					}
+				});
+				setSelectedModules(newModulesArray);
+			}
 		}
 	};
 
@@ -176,11 +178,11 @@ export function ModulesProvider({ children }) {
 		<ModulesContext.Provider
 			value={{
 				selectedModules,
+				gpa,
+				calculateIsClicked,
 				handleIncreaseModules,
 				handleDecreaseModules,
 				deleteModule,
-				gpa,
-				caluclateIsClicked,
 				changeSelectedModules,
 				changeSelectedModuleGrade,
 				calculateGPA,
