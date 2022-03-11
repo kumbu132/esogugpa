@@ -19,7 +19,7 @@ export default function Home() {
 					backgroundPosition: 'center',
 					backgroundRepeat: 'no-repeat',
 				}}
-				className="h-screen w-full mt-[60px]"
+				className=" w-full mt-[60px]"
 			>
 				{selectedModules.map((module) => (
 					<ModuleCard

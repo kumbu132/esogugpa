@@ -12,7 +12,8 @@ const ModuleCard = ({
 	akts,
 	isComplete,
 }) => {
-	const { deleteModule, changeSelectedModuleGrade } = useModules();
+	const { deleteModule, changeSelectedModules, changeSelectedModuleGrade } =
+		useModules();
 	const dersOptions = [];
 
 	dersler.map((ders) =>
@@ -52,6 +53,13 @@ const ModuleCard = ({
 		turkishCharacterRegex(option.data.label)
 			.toLowerCase()
 			.includes(turkishCharacterRegex(searchText).toLowerCase());
+	const handleModuleChange = (module) => {
+		var newModule = dersOptions.filter(
+			(ders) => ders.label === module.label
+		)[0];
+
+		changeSelectedModules(id, newModule);
+	};
 
 	const handleGradeChange = (moduleGrade) => {
 		var newModule = dersOptions.filter(
@@ -65,9 +73,9 @@ const ModuleCard = ({
 		<div className="h-[80px] w-full flex justify-around items-center  bg-[rgba(255,255,255,0.9)] px-1">
 			<Select
 				options={dersOptions}
-				//onChange={handleModuleChange}
+				onChange={handleModuleChange}
 				className="w-[60%] text-xs text-left"
-				placeholder={'Select module...'}
+				placeholder="Select module..."
 				filterOption={customFilter}
 				blurInputOnSelect
 				captureMenuScroll
@@ -77,7 +85,7 @@ const ModuleCard = ({
 				onChange={handleGradeChange}
 				className="w-[100px]"
 				isSearchable={false}
-				placeholder={'Grade'}
+				placeholder="Grade"
 				captureMenuScroll
 			/>
 			<CloseCircleOutlined
