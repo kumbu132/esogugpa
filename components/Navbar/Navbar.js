@@ -1,9 +1,16 @@
 import { useModules } from '../../context/context';
-import { PlusSquareOutlined, MinusSquareOutlined } from '@ant-design/icons';
+import {
+	PlusSquareOutlined,
+	MinusSquareOutlined,
+	CalculatorOutlined,
+} from '@ant-design/icons';
 const Navbar = () => {
-	const { selectedModules, handleIncreaseModules, handleDecreaseModules } =
-		useModules();
-	console.log(selectedModules);
+	const {
+		selectedModules,
+		handleIncreaseModules,
+		handleDecreaseModules,
+		calculateGPA,
+	} = useModules();
 
 	return (
 		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 border-b-1 border-solid border-gray-500 z-10 ">
@@ -29,7 +36,12 @@ const Navbar = () => {
 				</div>
 				<div className="language-and-help-buttons-wrapper flex justify-center items-center">
 					<button className="flex justify-center items-center w-5 h-5 mx-2" />
-					<button className="flex justify-center items-center w-5 h-5 mx-2" />
+					<button
+						className="flex justify-center items-center w-5 h-5 mx-2"
+						onClick={calculateGPA}
+					>
+						<CalculatorOutlined />
+					</button>
 				</div>
 			</div>
 		</nav>
