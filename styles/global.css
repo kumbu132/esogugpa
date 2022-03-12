@@ -2,14 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;700&family=Poppins:wght@100;400;700&display=swap');
 
 * {
-	background-color: #fcfcfc;
 	padding: 0;
 	margin: 0;
-	font-family: 'Lato', sans-serif;
+	font-family: 'Fredoka', sans-serif;
 	box-sizing: border-box;
+}
+
+body {
+	background-color: #fcfcfc;
 }
 
 .wrapper {
@@ -26,4 +29,44 @@
 /* Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
 	display: none;
+}
+
+.YT {
+	color: rgb(0, 87, 0);
+}
+
+.AA {
+	color: rgb(0, 87, 0);
+}
+
+.BA {
+	color: rgb(0, 119, 0);
+}
+
+.BB {
+	color: rgb(0, 169, 0);
+}
+
+.CB {
+	color: rgb(123, 175, 0);
+}
+
+.CC {
+	color: rgb(151, 192, 0);
+}
+
+.DC {
+	color: rgb(247, 140, 0);
+}
+
+.DD {
+	color: rgb(182, 103, 0);
+}
+
+.FF {
+	color: rgb(182, 0, 0);
+}
+
+.DZ {
+	color: rgb(182, 0, 0);
 }

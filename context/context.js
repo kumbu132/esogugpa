@@ -1,17 +1,25 @@
 import { createContext, useContext, useState } from 'react';
 import uuid from 'react-uuid';
+import { getLetterNoteWeight } from '../utils/utilityFunctions';
 
 const ModulesContext = createContext(undefined);
 
 export function ModulesProvider({ children }) {
 	const [selectedModules, setSelectedModules] = useState([]);
 	const [gpa, setGPA] = useState(3.1);
-	const [modalIsOpen, setIsOpen] = useState(false);
+	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [calculateIsClicked, setCalculateIsClicked] = useState(false);
 
 	const handleIncreaseModules = () => {
 		setCalculateIsClicked(false);
-		// resetIncompleteModuleWarning();
+		let arr = selectedModules;
+
+		if (selectedModules.length) {
+			arr.forEach((mod) => {
+				mod.firstLoad = false;
+			});
+			console.log({ arr });
+		}
 
 		var newModuleCard = {
 			id: uuid(),
@@ -21,8 +29,10 @@ export function ModulesProvider({ children }) {
 			akts: '',
 			grade: '',
 			complete: false,
+			firstLoad: true,
 		};
-		setSelectedModules((prevArray) => [...prevArray, newModuleCard]);
+
+		setSelectedModules([...arr, newModuleCard]);
 	};
 
 	const handleDecreaseModules = (deleteWasPressed = false) => {
@@ -30,11 +40,13 @@ export function ModulesProvider({ children }) {
 
 		if (selectedModules.length) {
 			if (!deleteWasPressed) {
-				setSelectedModules(
-					selectedModules.filter(
-						(module, idx) => idx !== selectedModules.length - 1
-					)
+				let arr = selectedModules.filter(
+					(module, idx) => idx !== selectedModules.length - 1
 				);
+				arr.forEach((module) => {
+					module.firstLoad = false;
+				});
+				setSelectedModules(arr);
 			}
 		} else {
 			return;
@@ -43,13 +55,16 @@ export function ModulesProvider({ children }) {
 
 	const deleteModule = (id) => {
 		let arr = selectedModules.filter((module, i) => module.id !== id);
+		arr.forEach((module) => {
+			module.firstLoad = false;
+		});
 		setSelectedModules(arr);
 	};
 
 	const changeSelectedModules = (id, module) => {
 		var newModulesArray = selectedModules.map((ders) => {
 			if (ders.id === id) {
-				if (calculateIsClicked && ders.grade === '') {
+				if (ders.grade === '') {
 					return {
 						...ders,
 						moduleID: module.moduleID,
@@ -58,7 +73,7 @@ export function ModulesProvider({ children }) {
 						akts: module.akts,
 						complete: false,
 					};
-				} else if (calculateIsClicked && ders.grade !== '') {
+				} else if (ders.grade !== '') {
 					return {
 						...ders,
 						moduleID: module.moduleID,
@@ -86,13 +101,13 @@ export function ModulesProvider({ children }) {
 	const changeSelectedModuleGrade = (id, module) => {
 		var updatedSelectedModules = selectedModules.map((ders) => {
 			if (ders.id === id) {
-				if (calculateIsClicked && ders.moduleName === '') {
+				if (ders.moduleName === '') {
 					return {
 						...ders,
 						grade: module.grade,
 						complete: false,
 					};
-				} else if (calculateIsClicked && ders.moduleName !== '') {
+				} else if (ders.moduleName !== '') {
 					return {
 						...ders,
 						grade: module.grade,
@@ -111,30 +126,6 @@ export function ModulesProvider({ children }) {
 		setSelectedModules(updatedSelectedModules);
 	};
 
-	const getLetterNoteWeight = (grade) => {
-		if (grade === 'AA') {
-			return 4;
-		} else if (grade === 'BA') {
-			return 3.5;
-		} else if (grade === 'BB') {
-			return 3;
-		} else if (grade === 'CB') {
-			return 2.5;
-		} else if (grade === 'CC') {
-			return 2;
-		} else if (grade === 'DC') {
-			return 1.5;
-		} else if (grade === 'DD') {
-			return 1;
-		} else if (grade === 'FF') {
-			return 0;
-		} else if (grade === 'DZ') {
-			return 0;
-		} else if (grade === 'YT') {
-			return 1;
-		}
-	};
-
 	const calculateGPA = () => {
 		if (selectedModules.length) {
 			var totalCredits = 0;
@@ -144,7 +135,7 @@ export function ModulesProvider({ children }) {
 
 			//CHECK IF ALL FIELDS FILLED
 			selectedModules.forEach((module) => {
-				if (module.moduleID === '' || module.grade === '') {
+				if (module.moduleName === '' || module.grade === '') {
 					calculate = false;
 				}
 			});
@@ -158,8 +149,13 @@ export function ModulesProvider({ children }) {
 					}
 				});
 
+				//TODO - check what happens when you have only one course that has 0 credits and you pass.
+				if (!totalCredits) {
+					totalCredits = 1;
+				}
+
 				setGPA(totalScore / totalCredits);
-				openModal();
+				setModalIsOpen(true);
 			} else {
 				var newModulesArray = selectedModules;
 				newModulesArray.forEach((ders) => {
@@ -180,11 +176,13 @@ export function ModulesProvider({ children }) {
 				selectedModules,
 				gpa,
 				calculateIsClicked,
+				modalIsOpen,
 				handleIncreaseModules,
 				handleDecreaseModules,
 				deleteModule,
 				changeSelectedModules,
 				changeSelectedModuleGrade,
+				setModalIsOpen,
 				calculateGPA,
 			}}
 		>
