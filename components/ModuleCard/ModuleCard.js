@@ -12,6 +12,7 @@ const ModuleCard = ({
 	grade,
 	akts,
 	isComplete,
+	firstLoad,
 }) => {
 	const {
 		deleteModule,
@@ -57,6 +58,7 @@ const ModuleCard = ({
 					? 'bg-[rgba(255,20,20,0.8)]'
 					: 'bg-[rgba(255,255,255,0.9)]'
 			}
+			${firstLoad ? 'animate-moduleCard' : ''}
 			px-1`}
 		>
 			<Select

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useModules } from '../../context/context';
 import {
 	PlusSquareOutlined,
@@ -6,6 +7,7 @@ import {
 	SettingOutlined,
 } from '@ant-design/icons';
 import ResultsModal from '../ResultsModal/ResultsModal';
+import SettingsMenu from '../SettingsMenu/SettingsMenu';
 const Navbar = () => {
 	const {
 		selectedModules,
@@ -14,6 +16,11 @@ const Navbar = () => {
 		calculateGPA,
 		modalIsOpen,
 	} = useModules();
+	const [settingsMenuIsOpen, setSettingsMenuIsOpen] = useState(false);
+
+	const closeMenu = () => {
+		setSettingsMenuIsOpen(false);
+	};
 
 	return (
 		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 bg-[#fcfcfc] border-b-1 border-solid border-gray-500 z-10 ">
@@ -44,9 +51,14 @@ const Navbar = () => {
 					>
 						<CalculatorOutlined style={{ fontSize: '20px' }} />
 					</button>
-					<button className="flex justify-center items-center w-5 h-5 mx-2 hover:opacity-60">
-						<SettingOutlined style={{ fontSize: '20px' }} />
-					</button>
+					<div className="flex justify-center items-center w-5 h-5 mx-2 hover:cursor-pointer ">
+						<SettingOutlined
+							style={{ fontSize: '20px' }}
+							className="hover:opacity-60"
+							onClick={() => setSettingsMenuIsOpen(!settingsMenuIsOpen)}
+						/>
+						{settingsMenuIsOpen && <SettingsMenu closeMenu={closeMenu} />}
+					</div>
 				</div>
 			</div>
 			{modalIsOpen && <ResultsModal />}
