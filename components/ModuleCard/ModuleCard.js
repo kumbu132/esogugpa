@@ -54,7 +54,7 @@ const ModuleCard = ({
 			className={`h-[80px] w-full flex justify-around items-center 
 			${
 				!isComplete && calculateIsClicked
-					? 'bg-[rgba(255,20,20,0.7)]'
+					? 'bg-[rgba(255,20,20,0.8)]'
 					: 'bg-[rgba(255,255,255,0.9)]'
 			}
 			px-1`}
