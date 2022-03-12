@@ -24,7 +24,7 @@ export default function Home() {
 				<title>ESOGU GPA CALCULATOR</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-40">
+			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-40 pointer-events-none">
 				<Image
 					src={'/images/esogu-logo.png'}
 					alt="esogu"
@@ -43,6 +43,7 @@ export default function Home() {
 						grade={module.grade}
 						akts={module.akts}
 						isComplete={module.complete}
+						firstLoad={module.firstLoad}
 					/>
 				))}
 			</main>

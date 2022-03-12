@@ -17,9 +17,19 @@ module.exports = {
 					'0%': { opacity: '0' },
 					'100%': { opacity: '1' },
 				},
+				fadeout: {
+					'0%': { opacity: '1' },
+					'100%': { opacity: '0' },
+				},
+				moduleCardOnEnter: {
+					'0%': { height: '0' },
+					'100%': { height: 'initial' },
+				},
 			},
 			animation: {
-				fadeIn: 'fadein 3s',
+				fadeIn: 'fadein 0.2s',
+				fadeOut: 'fadeout 0.2s',
+				moduleCard: 'moduleCardOnEnter 0.05s linear',
 			},
 		},
 	},

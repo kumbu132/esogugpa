@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useModules } from '../../context/context';
 import { LeftCircleOutlined } from '@ant-design/icons';
 import { displayGPA } from '../../utils/utilityFunctions';
@@ -5,13 +6,26 @@ import { displayGPA } from '../../utils/utilityFunctions';
 const ResultsModal = () => {
 	const { gpa, setModalIsOpen, selectedModules } = useModules();
 	console.log({ gpa });
+	const [isClosing, setIsClosing] = useState(false);
+
+	const handleCloseClick = () => {
+		setIsClosing(true);
+
+		setTimeout(() => {
+			setModalIsOpen(false);
+		}, 100);
+	};
 
 	return (
-		<div className="h-screen animate-[fadeIn] max-w-screen-md w-full absolute top-0 z-50 px-3 bg-[#fcfcfc]">
+		<div
+			className={`h-screen ${
+				isClosing ? 'animate-fadeOut' : 'animate-fadeIn'
+			} max-w-screen-md w-full absolute top-0 z-50 px-3 bg-[#fcfcfc]`}
+		>
 			<nav className="flex justify-end items-center h-[60px] p-1">
 				<button
 					className="h-[50px] w-[50px] hover:opacity-60"
-					onClick={() => setModalIsOpen(false)}
+					onClick={handleCloseClick}
 				>
 					<LeftCircleOutlined style={{ fontSize: '20px' }} />
 				</button>
@@ -61,6 +75,7 @@ const ResultsModal = () => {
 			<div className="results">
 				{selectedModules.map((module, idx) => (
 					<div
+						key={module.id}
 						className={`w-full flex justify-between items-center text-xs py-2 ${
 							idx % 2 ? 'bg-[rgb(214,214,214)]' : 'bg-[rgb(194,194,194)]'
 						}`}
