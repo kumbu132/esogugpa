@@ -5,6 +5,7 @@ import {
 	TranslationOutlined,
 } from '@ant-design/icons';
 import Image from 'next/image';
+import Link from 'next/link';
 
 const SettingsMenu = ({ closeMenu }) => {
 	return (
@@ -31,13 +32,17 @@ const SettingsMenu = ({ closeMenu }) => {
 				<InfoCircleOutlined style={{ fontSize: '16px' }} />
 				<p className="px-4">About</p>
 			</div>
-			<div
-				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-				onClick={closeMenu}
-			>
-				<MessageOutlined style={{ fontSize: '16px' }} />
-				<p className="px-4">Get in touch</p>
-			</div>
+			<Link href="/getintouch">
+				<a>
+					<div
+						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
+						onClick={closeMenu}
+					>
+						<MessageOutlined style={{ fontSize: '16px' }} />
+						<p className="px-4">Get in touch</p>
+					</div>{' '}
+				</a>
+			</Link>
 		</div>
 	);
 };

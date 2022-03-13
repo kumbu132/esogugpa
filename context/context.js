@@ -9,6 +9,7 @@ export function ModulesProvider({ children }) {
 	const [gpa, setGPA] = useState(3.1);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [calculateIsClicked, setCalculateIsClicked] = useState(false);
+	const [isHomePage, setIsHomePage] = useState(true);
 
 	const handleIncreaseModules = () => {
 		setCalculateIsClicked(false);
@@ -18,7 +19,6 @@ export function ModulesProvider({ children }) {
 			arr.forEach((mod) => {
 				mod.firstLoad = false;
 			});
-			console.log({ arr });
 		}
 
 		var newModuleCard = {
@@ -30,6 +30,7 @@ export function ModulesProvider({ children }) {
 			grade: '',
 			complete: false,
 			firstLoad: true,
+			deleteThisModule: false,
 		};
 
 		setSelectedModules([...arr, newModuleCard]);
@@ -47,6 +48,13 @@ export function ModulesProvider({ children }) {
 					module.firstLoad = false;
 				});
 				setSelectedModules(arr);
+
+				// let arr = selectedModules;
+				// let i = selectedModules.length - 1;
+				// arr[i].deleteThisModule = true;
+				// arr[i].firstLoad = false;
+
+				// setSelectedModules(arr);
 			}
 		} else {
 			return;
@@ -177,6 +185,7 @@ export function ModulesProvider({ children }) {
 				gpa,
 				calculateIsClicked,
 				modalIsOpen,
+				isHomePage,
 				handleIncreaseModules,
 				handleDecreaseModules,
 				deleteModule,
@@ -184,6 +193,7 @@ export function ModulesProvider({ children }) {
 				changeSelectedModuleGrade,
 				setModalIsOpen,
 				calculateGPA,
+				setIsHomePage,
 			}}
 		>
 			{children}

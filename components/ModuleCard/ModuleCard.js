@@ -1,3 +1,6 @@
+//useEffect. if isDeleted is true, set state in such a way so that the thing deletes both from the array and here0
+
+import { useState, useEffect } from 'react';
 import Select from 'react-select';
 import { useModules } from '../../context/context';
 import { CloseCircleOutlined } from '@ant-design/icons';
@@ -13,6 +16,7 @@ const ModuleCard = ({
 	akts,
 	isComplete,
 	firstLoad,
+	deleteThisModule,
 }) => {
 	const {
 		deleteModule,
@@ -21,6 +25,7 @@ const ModuleCard = ({
 		changeSelectedModuleGrade,
 	} = useModules();
 	const dersOptions = [];
+	const [isDeleting, setIsDeleting] = useState(false);
 
 	dersler.map((ders) =>
 		dersOptions.push({
@@ -50,6 +55,17 @@ const ModuleCard = ({
 		changeSelectedModuleGrade(id, newModule);
 	};
 
+	const handleDelete = () => {
+		setIsDeleting(true);
+		setTimeout(() => {
+			deleteModule(id);
+		}, 50);
+	};
+
+	useEffect(() => {
+		console.log({ deleteThisModule });
+	}, [deleteThisModule]);
+
 	return (
 		<div
 			className={`h-[80px] w-full flex justify-around items-center 
@@ -59,7 +75,8 @@ const ModuleCard = ({
 					: 'bg-[rgba(255,255,255,0.9)]'
 			}
 			${firstLoad ? 'animate-moduleCard' : ''}
-			px-1`}
+			${isDeleting ? 'animate-moduleDelete' : ''}			px-1
+`}
 		>
 			<Select
 				options={dersOptions}
@@ -80,7 +97,7 @@ const ModuleCard = ({
 			/>
 			<CloseCircleOutlined
 				className="hover:cursor-pointer hover:opacity-80"
-				onClick={() => deleteModule(id)}
+				onClick={handleDelete}
 			/>
 		</div>
 	);

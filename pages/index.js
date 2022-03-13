@@ -10,17 +10,17 @@
 // fonts
 // faw page and contact page will have "Calculate GPA!/GNO Hesaplaya! button in nav to take them back to home"
 // SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO
-import { useEffect } from 'react';
+//when changing set value
 import { useModules } from '../context/context';
+import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import ModuleCard from '../components/ModuleCard/ModuleCard';
 export default function Home() {
-	const { selectedModules } = useModules();
-
+	const { selectedModules, setIsHomePage } = useModules();
 	useEffect(() => {
-		console.log({ selectedModules });
-	}, [selectedModules]);
+		setIsHomePage(true);
+	}, []);
 	return (
 		<div className="wrapper max-w-screen-md relative">
 			<Head>
@@ -47,6 +47,7 @@ export default function Home() {
 						akts={module.akts}
 						isComplete={module.complete}
 						firstLoad={module.firstLoad}
+						deleteThisModule={module.deleteThisModule}
 					/>
 				))}
 			</main>

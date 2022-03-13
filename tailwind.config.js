@@ -25,11 +25,16 @@ module.exports = {
 					'0%': { height: '0' },
 					'100%': { height: 'initial' },
 				},
+				moduleCardOnExit: {
+					'0%': { height: 'initial' },
+					'100%': { height: '0%' },
+				},
 			},
 			animation: {
 				fadeIn: 'fadein 0.2s',
 				fadeOut: 'fadeout 0.2s',
 				moduleCard: 'moduleCardOnEnter 0.05s linear',
+				moduleDelete: 'moduleCardOnExit 0.05s linear',
 			},
 		},
 	},

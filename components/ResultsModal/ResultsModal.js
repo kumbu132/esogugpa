@@ -5,7 +5,6 @@ import { displayGPA } from '../../utils/utilityFunctions';
 
 const ResultsModal = () => {
 	const { gpa, setModalIsOpen, selectedModules } = useModules();
-	console.log({ gpa });
 	const [isClosing, setIsClosing] = useState(false);
 
 	const handleCloseClick = () => {

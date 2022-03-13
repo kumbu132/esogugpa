@@ -31,6 +31,11 @@ body {
 	display: none;
 }
 
+input,
+textarea {
+	background: inherit;
+}
+
 .YT {
 	color: rgb(0, 87, 0);
 }
