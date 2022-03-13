@@ -25,8 +25,8 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 bg-[#fcfcfc] border-b-1 border-solid border-gray-500 z-10 ">
-			<div className="navbar-container flex justify-between items-center h-full w-full px-2 max-w-screen-md">
+		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 bg-[#fcfcfc]  z-10">
+			<div className="navbar-container flex justify-between items-center h-full w-full px-2 max-w-screen-md border-b">
 				{isHomePage && (
 					<div className="number-of-modules-controls-wrapper flex justify-between items-center ">
 						<div className="number-of-modules-buttons-wrapper flex justify-center items-center ">
