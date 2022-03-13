@@ -7,6 +7,9 @@
 // animations
 // get in touch form
 // deleteaspressed unnecessary?
+// fonts
+// faw page and contact page will have "Calculate GPA!/GNO Hesaplaya! button in nav to take them back to home"
+// SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO SEO
 import { useEffect } from 'react';
 import { useModules } from '../context/context';
 import Head from 'next/head';

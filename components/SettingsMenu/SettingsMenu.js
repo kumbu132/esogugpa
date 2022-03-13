@@ -1,4 +1,9 @@
-import { QuestionCircleOutlined, TranslationOutlined } from '@ant-design/icons';
+import {
+	QuestionCircleOutlined,
+	InfoCircleOutlined,
+	MessageOutlined,
+	TranslationOutlined,
+} from '@ant-design/icons';
 import Image from 'next/image';
 
 const SettingsMenu = ({ closeMenu }) => {
@@ -18,6 +23,20 @@ const SettingsMenu = ({ closeMenu }) => {
 			>
 				<QuestionCircleOutlined style={{ fontSize: '16px' }} />
 				<p className="px-4">Frequently Asked Questions</p>
+			</div>
+			<div
+				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
+				onClick={closeMenu}
+			>
+				<InfoCircleOutlined style={{ fontSize: '16px' }} />
+				<p className="px-4">About</p>
+			</div>
+			<div
+				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
+				onClick={closeMenu}
+			>
+				<MessageOutlined style={{ fontSize: '16px' }} />
+				<p className="px-4">Get in touch</p>
 			</div>
 		</div>
 	);
