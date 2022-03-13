@@ -21,3 +21,31 @@ export const getLetterNoteWeight = (grade) => {
 		return 1;
 	}
 };
+
+export const faqs = [
+	{
+		id: '1',
+		question: 'why you so?',
+		answer: 'because i am',
+	},
+	{
+		id: '2',
+		question: 'why you so?',
+		answer: 'because i am',
+	},
+	{
+		id: '3',
+		question: 'why you so?',
+		answer: 'because i am',
+	},
+	{
+		id: '4',
+		question: 'why you so?',
+		answer: 'because i am',
+	},
+	{
+		id: '5',
+		question: 'why you so?',
+		answer: 'because i am',
+	},
+];

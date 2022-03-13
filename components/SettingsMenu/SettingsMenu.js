@@ -18,13 +18,17 @@ const SettingsMenu = ({ closeMenu }) => {
 				<Image src="/images/moon.svg" alt="moon" width="16" height="16" />
 				<p className="px-4">THEME</p>
 			</div>
-			<div
-				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-				onClick={closeMenu}
-			>
-				<QuestionCircleOutlined style={{ fontSize: '16px' }} />
-				<p className="px-4">Frequently Asked Questions</p>
-			</div>
+			<Link href="/faqs">
+				<a>
+					<div
+						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
+						onClick={closeMenu}
+					>
+						<QuestionCircleOutlined style={{ fontSize: '16px' }} />
+						<p className="px-4">Frequently Asked Questions</p>
+					</div>
+				</a>
+			</Link>
 			<div
 				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
 				onClick={closeMenu}

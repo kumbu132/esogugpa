@@ -72,10 +72,10 @@ const ModuleCard = ({
 			${
 				!isComplete && calculateIsClicked
 					? 'bg-[rgba(255,20,20,0.8)]'
-					: 'bg-[rgba(255,255,255,0.9)]'
+					: 'bg-[rgba(252,252,252,0.9)]'
 			}
 			${firstLoad ? 'animate-moduleCard' : ''}
-			${isDeleting ? 'animate-moduleDelete' : ''}			px-1
+			${isDeleting ? 'animate-moduleDelete' : ''}			px-1 border
 `}
 		>
 			<Select
