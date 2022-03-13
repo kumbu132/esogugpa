@@ -9,6 +9,7 @@ export function ModulesProvider({ children }) {
 	const [gpa, setGPA] = useState(3.1);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [calculateIsClicked, setCalculateIsClicked] = useState(false);
+	const [isHomePage, setIsHomePage] = useState(true);
 
 	const handleIncreaseModules = () => {
 		setCalculateIsClicked(false);
@@ -184,6 +185,7 @@ export function ModulesProvider({ children }) {
 				gpa,
 				calculateIsClicked,
 				modalIsOpen,
+				isHomePage,
 				handleIncreaseModules,
 				handleDecreaseModules,
 				deleteModule,
@@ -191,6 +193,7 @@ export function ModulesProvider({ children }) {
 				changeSelectedModuleGrade,
 				setModalIsOpen,
 				calculateGPA,
+				setIsHomePage,
 			}}
 		>
 			{children}

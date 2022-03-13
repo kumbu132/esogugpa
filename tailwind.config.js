@@ -27,7 +27,7 @@ module.exports = {
 				},
 				moduleCardOnExit: {
 					'0%': { height: 'initial' },
-					'100%': { height: '0' },
+					'100%': { height: '0%' },
 				},
 			},
 			animation: {
