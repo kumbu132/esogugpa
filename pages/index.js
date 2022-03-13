@@ -18,9 +18,6 @@ import ModuleCard from '../components/ModuleCard/ModuleCard';
 export default function Home() {
 	const { selectedModules } = useModules();
 
-	useEffect(() => {
-		console.log({ selectedModules });
-	}, [selectedModules]);
 	return (
 		<div className="wrapper max-w-screen-md relative">
 			<Head>
@@ -47,6 +44,7 @@ export default function Home() {
 						akts={module.akts}
 						isComplete={module.complete}
 						firstLoad={module.firstLoad}
+						deleteThisModule={module.deleteThisModule}
 					/>
 				))}
 			</main>
