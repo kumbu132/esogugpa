@@ -15,7 +15,7 @@ const FAQ = ({ question, answer, id, active, setActive }) => {
 				{active !== id && <CaretDownOutlined style={{ fontSize: '16px' }} />}
 				{active === id && <CaretUpOutlined style={{ fontSize: '16px' }} />}
 			</div>
-			{active === id && <p className="animate-mouleCard">{answer}</p>}
+			{active === id && <p className="animate-moduleCard">{answer}</p>}
 		</div>
 	);
 };

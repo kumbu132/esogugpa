@@ -5,10 +5,13 @@ import {
 	MinusSquareOutlined,
 	CalculatorOutlined,
 	SettingOutlined,
+	CloseCircleOutlined,
 } from '@ant-design/icons';
 import ResultsModal from '../ResultsModal/ResultsModal';
 import SettingsMenu from '../SettingsMenu/SettingsMenu';
 import Link from 'next/link';
+import { notification } from 'antd';
+import 'antd/dist/antd.css';
 const Navbar = () => {
 	const {
 		selectedModules,
@@ -17,12 +20,43 @@ const Navbar = () => {
 		calculateGPA,
 		modalIsOpen,
 		isHomePage,
+		incompleteModulesWarning,
 	} = useModules();
 	const [settingsMenuIsOpen, setSettingsMenuIsOpen] = useState(false);
 
 	const closeMenu = () => {
 		setSettingsMenuIsOpen(false);
 	};
+
+	const openNotification = (placement) => {
+		notification.warning({
+			message: 'Error',
+			description: 'Fill in the missing fields!',
+			placement,
+			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
+		});
+	};
+	const handleCalculateGPA = () => {
+		calculateGPA();
+		// console.log({ incompleteModulesWarning });
+		// showWarning();
+		// if (incompleteModulesWarning) {
+		// 	openNotification('top');
+		// }
+	};
+
+	const showWarning = () => {
+		if (incompleteModulesWarning) {
+			openNotification('top');
+		}
+	};
+
+	useEffect(() => {
+		// handleCalculateGPA();
+		if (incompleteModulesWarning) {
+			showWarning();
+		}
+	}, [incompleteModulesWarning]);
 
 	return (
 		<nav className="navbar flex justify-center items-center  h-[60px] w-full fixed top-0 bg-[#fcfcfc]  z-10">
@@ -68,7 +102,7 @@ const Navbar = () => {
 					{isHomePage && (
 						<button
 							className="flex justify-center items-center w-5 h-5 mx-2 hover:opacity-60"
-							onClick={calculateGPA}
+							onClick={handleCalculateGPA}
 						>
 							<CalculatorOutlined style={{ fontSize: '20px' }} />
 						</button>

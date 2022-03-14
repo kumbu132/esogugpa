@@ -6,13 +6,16 @@ const ModulesContext = createContext(undefined);
 
 export function ModulesProvider({ children }) {
 	const [selectedModules, setSelectedModules] = useState([]);
-	const [gpa, setGPA] = useState(3.1);
+	const [gpa, setGPA] = useState(0);
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [calculateIsClicked, setCalculateIsClicked] = useState(false);
 	const [isHomePage, setIsHomePage] = useState(true);
+	const [incompleteModulesWarning, setIncompleteModulesWarning] =
+		useState(false);
 
 	const handleIncreaseModules = () => {
 		setCalculateIsClicked(false);
+		setIncompleteModulesWarning(false);
 		let arr = selectedModules;
 
 		if (selectedModules.length) {
@@ -38,6 +41,7 @@ export function ModulesProvider({ children }) {
 
 	const handleDecreaseModules = (deleteWasPressed = false) => {
 		setCalculateIsClicked(false);
+		setIncompleteModulesWarning(false);
 
 		if (selectedModules.length) {
 			if (!deleteWasPressed) {
@@ -149,6 +153,8 @@ export function ModulesProvider({ children }) {
 			});
 
 			if (calculate) {
+				setIncompleteModulesWarning(false);
+
 				selectedModules.forEach((module) => {
 					totalCredits += Number(module.credits);
 					if (module.grade !== '') {
@@ -173,6 +179,8 @@ export function ModulesProvider({ children }) {
 						ders.complete = true;
 					}
 				});
+				setIncompleteModulesWarning(true);
+				console.log('setIncomplete true');
 				setSelectedModules(newModulesArray);
 			}
 		}
@@ -186,6 +194,7 @@ export function ModulesProvider({ children }) {
 				calculateIsClicked,
 				modalIsOpen,
 				isHomePage,
+				incompleteModulesWarning,
 				handleIncreaseModules,
 				handleDecreaseModules,
 				deleteModule,

@@ -16,11 +16,14 @@ import { useEffect } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import ModuleCard from '../components/ModuleCard/ModuleCard';
+
 export default function Home() {
 	const { selectedModules, setIsHomePage } = useModules();
+
 	useEffect(() => {
 		setIsHomePage(true);
 	}, []);
+
 	return (
 		<div className="wrapper max-w-screen-md relative">
 			<Head>

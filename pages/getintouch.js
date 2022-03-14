@@ -3,6 +3,8 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useModules } from '../context/context';
 import axios from 'axios';
+import { notification } from 'antd';
+import { CloseCircleOutlined } from '@ant-design/icons';
 
 const GetInTouch = () => {
 	const { setIsHomePage } = useModules();
@@ -11,7 +13,6 @@ const GetInTouch = () => {
 		email: '',
 		message: '',
 	});
-	const [submitted, setSubmitted] = useState(false);
 	const clearForm = () => {
 		setFormData({ name: '', email: '', message: '' });
 	};
@@ -20,15 +21,32 @@ const GetInTouch = () => {
 		axios
 			.post('/.netlify/functions/contact', formData)
 			.then(function (response) {
-				console.log(response);
 				if (response.status === 200) {
+					showSuccessToast();
 					clearForm();
 				}
-				setSubmitted(true);
 			})
 			.catch(function (error) {
 				console.log(error);
+				showFailToast();
 			});
+	};
+
+	const showSuccessToast = () => {
+		notification.success({
+			message: 'Success!',
+			description: 'Your message was successfully sent!',
+			placement: 'top',
+			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
+		});
+	};
+	const showFailToast = () => {
+		notification.error({
+			message: 'Error!',
+			description: 'An error occured. Please try again later.',
+			placement: 'top',
+			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
+		});
 	};
 
 	useEffect(() => {

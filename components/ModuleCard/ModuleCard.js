@@ -16,7 +16,6 @@ const ModuleCard = ({
 	akts,
 	isComplete,
 	firstLoad,
-	deleteThisModule,
 }) => {
 	const {
 		deleteModule,
@@ -61,10 +60,6 @@ const ModuleCard = ({
 			deleteModule(id);
 		}, 50);
 	};
-
-	useEffect(() => {
-		console.log({ deleteThisModule });
-	}, [deleteThisModule]);
 
 	return (
 		<div

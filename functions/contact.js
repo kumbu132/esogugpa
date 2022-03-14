@@ -38,7 +38,6 @@ exports.handler = async function (event, context) {
 				} else {
 					message = 'success OK';
 					statusCode = 200;
-					console.log({ mailData });
 					resolve();
 				}
 			});
