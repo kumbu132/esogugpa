@@ -22,7 +22,7 @@ module.exports = {
 					'100%': { opacity: '0' },
 				},
 				moduleCardOnEnter: {
-					'0%': { height: '0' },
+					'0%': { height: '0%' },
 					'100%': { height: 'initial' },
 				},
 				moduleCardOnExit: {
@@ -35,6 +35,7 @@ module.exports = {
 				fadeOut: 'fadeout 0.2s',
 				moduleCard: 'moduleCardOnEnter 0.05s linear',
 				moduleDelete: 'moduleCardOnExit 0.05s linear',
+				faq: 'moduleCardOnEnter 1.5s linear',
 			},
 		},
 	},
