@@ -27,7 +27,7 @@ export default function Home() {
 	return (
 		<div className="wrapper max-w-screen-md relative">
 			<Head>
-				<title>ESOGU GPA CALCULATOR</title>
+				<title>ESOGU GNO HESAPLAMA</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-20 pointer-events-none">

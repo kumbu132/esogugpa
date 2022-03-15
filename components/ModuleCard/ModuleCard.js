@@ -77,7 +77,7 @@ const ModuleCard = ({
 				options={dersOptions}
 				onChange={handleModuleChange}
 				className="w-[60%] text-xs text-left"
-				placeholder="Select module..."
+				placeholder="Ders seçin..."
 				filterOption={customFilter}
 				blurInputOnSelect
 				captureMenuScroll
@@ -85,9 +85,9 @@ const ModuleCard = ({
 			<Select
 				options={gradeOptions}
 				onChange={handleGradeChange}
-				className="w-[100px]"
+				className="w-[100px] text-xs"
 				isSearchable={false}
-				placeholder="Grade"
+				placeholder="Harf notu"
 				captureMenuScroll
 			/>
 			<CloseCircleOutlined
