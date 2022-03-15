@@ -30,8 +30,8 @@ const Navbar = () => {
 
 	const openNotification = (placement) => {
 		notification.warning({
-			message: 'Error',
-			description: 'Fill in the missing fields!',
+			message: 'Hata',
+			description: 'Eksik alanları doldurun.',
 			placement,
 			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
 		});
@@ -81,7 +81,7 @@ const Navbar = () => {
 				)}
 				{isHomePage && (
 					<div className="number-of-modules-text">
-						Number of courses: {selectedModules.length}
+						Ders sayısı: {selectedModules.length}
 					</div>
 				)}
 				{!isHomePage && (
@@ -92,7 +92,7 @@ const Navbar = () => {
 							hover:opacity-60"
 							>
 								<CalculatorOutlined style={{ fontSize: '20px' }} />
-								<p className="mx-2 font-bold">CALCULATE GPA!</p>
+								<p className="mx-2 font-bold">GNO HESAPLA!</p>
 							</a>
 						</Link>
 					</div>

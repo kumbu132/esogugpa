@@ -34,16 +34,16 @@ const GetInTouch = () => {
 
 	const showSuccessToast = () => {
 		notification.success({
-			message: 'Success!',
-			description: 'Your message was successfully sent!',
+			message: 'Başarı!',
+			description: 'Mesajınız başarıyla gönderildi!',
 			placement: 'top',
 			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
 		});
 	};
 	const showFailToast = () => {
 		notification.error({
-			message: 'Error!',
-			description: 'An error occured. Please try again later.',
+			message: 'Hata!',
+			description: 'Bir hata oluştu. Lütfen daha sonra tekrar deneyiniz.',
 			placement: 'top',
 			closeIcon: <CloseCircleOutlined style={{ fontSize: '16px' }} />,
 		});
@@ -55,7 +55,7 @@ const GetInTouch = () => {
 	return (
 		<div className="wrapper max-w-screen-md relative">
 			<Head>
-				<title>ESOGU GPA CALCULATOR | Get in touch</title>
+				<title>ESOGU GNO HESAPLAMA| İletişime geçin</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-20 pointer-events-none">
@@ -66,13 +66,15 @@ const GetInTouch = () => {
 					height="200"
 				/>
 			</span>
-			<main className=" w-full mt-[60px] flex justify-center items-center">
+			<main className=" w-full mt-[60px] p-3">
+				<h1 className="text-3xl my-3">İletişime geçin</h1>
+
 				<form
-					className="contact-form w-[768px]  my-5 py-5 px-5"
+					className="contact-form w-full  text-justıfy text-lg"
 					onSubmit={handleSubmit}
 				>
 					<p className="text-lg">
-						{`Hey there, my name is `}
+						{`Merhaba, ismim `}
 						<span>
 							<input
 								type="text"
@@ -82,13 +84,10 @@ const GetInTouch = () => {
 									setFormData({ ...formData, name: e.target.value });
 								}}
 								className="input-field max-w-[200px]"
-								placeholder="your name here"
+								placeholder="isminizi buraya yazın."
 								required
 							/>
 						</span>
-						<br />
-						<br />
-						{`I was wondering if you could assist me with `}
 						<br />
 
 						<span>
@@ -99,14 +98,14 @@ const GetInTouch = () => {
 									setFormData({ ...formData, message: e.target.value });
 								}}
 								className="input-field w-full h-96"
-								placeholder="short project description."
+								placeholder="Mesajınızı buraya yazın"
 								wrap="true"
 								required
 							/>
 						</span>
 						<br />
 						<br />
-						{`You can reach me at `}
+						{`Bana `}
 						<span>
 							<input
 								type="email"
@@ -115,10 +114,12 @@ const GetInTouch = () => {
 								onChange={(e) => {
 									setFormData({ ...formData, email: e.target.value });
 								}}
-								className="input-field"
-								placeholder="your email address."
+								className="input-field w-[250px]"
+								placeholder="eposta adresinizi buraya yazin."
 								required
 							/>
+							{/*if english, don't display logic */}
+							{` dan ulaşabilirsiniz.`}
 						</span>
 						<br />
 					</p>
