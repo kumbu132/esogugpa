@@ -29,13 +29,17 @@ const SettingsMenu = ({ closeMenu }) => {
 					</div>
 				</a>
 			</Link>
-			<div
-				className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-				onClick={closeMenu}
-			>
-				<InfoCircleOutlined style={{ fontSize: '16px' }} />
-				<p className="px-4">About</p>
-			</div>
+			<Link href="/about">
+				<a>
+					<div
+						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
+						onClick={closeMenu}
+					>
+						<InfoCircleOutlined style={{ fontSize: '16px' }} />
+						<p className="px-4">About</p>
+					</div>
+				</a>
+			</Link>
 			<Link href="/getintouch">
 				<a>
 					<div

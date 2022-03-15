@@ -58,7 +58,7 @@ const GetInTouch = () => {
 				<title>ESOGU GPA CALCULATOR | Get in touch</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-40 pointer-events-none">
+			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-20 pointer-events-none">
 				<Image
 					src={'/images/esogu-logo.png'}
 					alt="esogu"
