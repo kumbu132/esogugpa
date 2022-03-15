@@ -22,8 +22,8 @@ const About = () => {
 					height="200"
 				/>
 			</span>
-			<main className=" w-full mt-[60px] p-3">
-				<h1 className="text-3xl my-2">Hakkında</h1>
+			<main className=" w-full pt-[60px] p-3">
+				<h1 className="text-3xl my-2 font-bold">Hakkında</h1>
 				<div className=" ">
 					<p className="text-lg py-2 text-justify">
 						Asırlık bir soruna basit bir çözüm - dönem GNO'nızı tahmin etmek! Bu

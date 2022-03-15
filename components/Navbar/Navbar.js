@@ -80,7 +80,7 @@ const Navbar = () => {
 					</div>
 				)}
 				{isHomePage && (
-					<div className="number-of-modules-text">
+					<div className="number-of-modules-text font-bold text-lg">
 						Ders sayısı: {selectedModules.length}
 					</div>
 				)}

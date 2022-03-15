@@ -58,7 +58,7 @@ const GetInTouch = () => {
 				<title>ESOGU GNO HESAPLAMA| İletişime geçin</title>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-20 pointer-events-none">
+			<span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-10 pointer-events-none">
 				<Image
 					src={'/images/esogu-logo.png'}
 					alt="esogu"
@@ -66,8 +66,14 @@ const GetInTouch = () => {
 					height="200"
 				/>
 			</span>
-			<main className=" w-full mt-[60px] p-3">
-				<h1 className="text-3xl my-3">İletişime geçin</h1>
+			<main className=" w-full pt-[60px] p-3">
+				<h1 className="text-3xl my-3 font-bold">İletişime geçin</h1>
+				<p className="text-lg py-3 text-justify border-b">
+					Bu site bir öğrenci tarafından diğer öğrencilere yardımcı olmak için
+					yapılmıştır. Web sitesini beraber yönetelim. Herhangi bir yorumunuz,
+					öneriniz veya bir hata bildirmek istiyorsanız, çekinmeyin. Bir mesaj
+					gönderin!
+				</p>
 
 				<form
 					className="contact-form w-full  text-justıfy text-lg"
@@ -83,7 +89,7 @@ const GetInTouch = () => {
 								onChange={(e) => {
 									setFormData({ ...formData, name: e.target.value });
 								}}
-								className="input-field max-w-[200px]"
+								className="input-field border-b max-w-[200px]"
 								placeholder="isminizi buraya yazın."
 								required
 							/>
@@ -97,7 +103,7 @@ const GetInTouch = () => {
 								onChange={(e) => {
 									setFormData({ ...formData, message: e.target.value });
 								}}
-								className="input-field w-full h-96"
+								className="input-field border-b w-full h-64"
 								placeholder="Mesajınızı buraya yazın"
 								wrap="true"
 								required
@@ -114,7 +120,7 @@ const GetInTouch = () => {
 								onChange={(e) => {
 									setFormData({ ...formData, email: e.target.value });
 								}}
-								className="input-field w-[250px]"
+								className="input-field border-b w-[250px]"
 								placeholder="eposta adresinizi buraya yazin."
 								required
 							/>

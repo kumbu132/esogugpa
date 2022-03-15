@@ -22,7 +22,7 @@ const FAQs = () => {
 					height="200"
 				/>
 			</span>
-			<main className=" w-full mt-[60px] flex flex-col justify-center items-center">
+			<main className=" w-full pt-[60px] flex flex-col justify-center items-center">
 				{faqs.map((faq) => (
 					<div key={faq.id} className="w-full">
 						<FAQ

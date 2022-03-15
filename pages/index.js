@@ -38,7 +38,7 @@ export default function Home() {
 					height="200"
 				/>
 			</span>
-			<main className=" w-full mt-[60px]">
+			<main className=" w-full pt-[60px]">
 				{selectedModules.map((module) => (
 					<ModuleCard
 						key={module.id}
