@@ -6,8 +6,15 @@ import {
 } from '@ant-design/icons';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useModules } from '../../context/context';
 
 const SettingsMenu = ({ closeMenu }) => {
+	const { resetModules } = useModules();
+
+	const handlePageChange = () => {
+		resetModules();
+		closeMenu();
+	};
 	return (
 		<div className="absolute top-[58px] w-[300px] translate-x-[-45%] overflow-hidden h-max animate-fadeIn z-50">
 			{/* <div className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm">
@@ -22,7 +29,7 @@ const SettingsMenu = ({ closeMenu }) => {
 				<a>
 					<div
 						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-						onClick={closeMenu}
+						onClick={handlePageChange}
 					>
 						<QuestionCircleOutlined style={{ fontSize: '16px' }} />
 						<p className="px-4">Sıkça Sorulan Soruları</p>
@@ -33,7 +40,7 @@ const SettingsMenu = ({ closeMenu }) => {
 				<a>
 					<div
 						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-						onClick={closeMenu}
+						onClick={handlePageChange}
 					>
 						<InfoCircleOutlined style={{ fontSize: '16px' }} />
 						<p className="px-4">Hakkında</p>
@@ -44,7 +51,7 @@ const SettingsMenu = ({ closeMenu }) => {
 				<a>
 					<div
 						className="p-4 flex items-center border bg-[#fcfcfc] hover:bg-slate-200 rounded-sm"
-						onClick={closeMenu}
+						onClick={handlePageChange}
 					>
 						<MessageOutlined style={{ fontSize: '16px' }} />
 						<p className="px-4">İletişime geçin</p>
