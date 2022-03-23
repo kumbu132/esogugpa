@@ -180,10 +180,14 @@ export function ModulesProvider({ children }) {
 					}
 				});
 				setIncompleteModulesWarning(true);
-				console.log('setIncomplete true');
 				setSelectedModules(newModulesArray);
 			}
 		}
+	};
+
+	const resetModules = () => {
+		const arr = [];
+		setSelectedModules(arr);
 	};
 
 	return (
@@ -203,6 +207,7 @@ export function ModulesProvider({ children }) {
 				setModalIsOpen,
 				calculateGPA,
 				setIsHomePage,
+				resetModules,
 			}}
 		>
 			{children}

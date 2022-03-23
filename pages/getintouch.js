@@ -76,7 +76,7 @@ const GetInTouch = () => {
 				</p>
 
 				<form
-					className="contact-form w-full  text-justıfy text-lg"
+					className="contact-form w-full mt-6 text-justıfy text-lg"
 					onSubmit={handleSubmit}
 				>
 					<p className="text-lg">

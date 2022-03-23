@@ -31,7 +31,7 @@ const ResultsModal = () => {
 			</nav>
 			<div className="flex justify-center items-center my-2">
 				<h1 className="text-3xl font-bold">
-					GPA:{' '}
+					GNO:{' '}
 					<span
 						className={`${
 							gpa >= 3.8
@@ -59,16 +59,16 @@ const ResultsModal = () => {
 			</div>
 			<div className="flex justify-between items-center">
 				<div className="w-[25%] text-center font-bold">
-					<h2>MODULE</h2>
+					<h2>DERS</h2>
 				</div>
 				<div className="w-[25%] text-center font-bold">
-					<h2>CREDITS</h2>
+					<h2>KREDİ</h2>
 				</div>
 				<div className="w-[25%] text-center font-bold">
-					<h2>ECTS</h2>
+					<h2>AKTS</h2>
 				</div>
 				<div className="w-[25%] text-center font-bold">
-					<h2>GRADE</h2>
+					<h2>HARF NOTU</h2>
 				</div>
 			</div>
 			<div className="results">
