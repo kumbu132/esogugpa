@@ -36,6 +36,7 @@ export default function Home() {
 
   useEffect(() => {
     setIsHomePage(true)
+    console.log({ ENV: process.env })
   }, [])
 
   useEffect(() => {
