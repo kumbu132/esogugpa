@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const cms = axios.create({
-  baseURL: process.env.APP_CMS_URL,
+  baseURL: "https://esogugpa-backend.herokuapp.com/",
 })
 
 export const fetchDepartmentModules = async () => {
