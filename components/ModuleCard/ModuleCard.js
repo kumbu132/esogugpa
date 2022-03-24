@@ -27,7 +27,7 @@ const ModuleCard = ({
   const dersOptions = []
 
   departmentModules.map((ders) => {
-    const { module_id, name, ects } = ders.attributes
+    const { module_id, name, ects, credits } = ders.attributes
     dersOptions.push({
       value: `${module_id} ${name}`,
       label: `${module_id} ${name}`,
