@@ -6,7 +6,7 @@ const cms = axios.create({
 
 export const fetchDepartmentModules = async () => {
   let start = 0
-  let limit = 30
+  let limit = 100
   let total = 0
   let res = []
   while (start <= total) {
