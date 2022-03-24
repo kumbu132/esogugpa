@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import { useModules } from "../../context/context"
 import { CloseCircleOutlined } from "@ant-design/icons"
-import dersler from "../../utils/mmf-bilgisayar-muhendisligi.json"
 import { customFilter, gradeOptions } from "../../utils/utilityFunctions"
 
 const ModuleCard = ({
@@ -22,20 +21,22 @@ const ModuleCard = ({
     calculateIsClicked,
     changeSelectedModules,
     changeSelectedModuleGrade,
+    departmentModules,
   } = useModules()
-  const dersOptions = []
   const [isDeleting, setIsDeleting] = useState(false)
+  const dersOptions = []
 
-  dersler.map((ders) =>
+  departmentModules.map((ders) => {
+    const { module_id, name, ects } = ders.attributes
     dersOptions.push({
-      value: `${ders["module-id"]} ${ders["module-name"]}`,
-      label: `${ders["module-id"]} ${ders["module-name"]}`,
-      moduleName: ders["module-name"],
-      moduleID: ders["module-id"],
-      credits: ders["credits"],
-      akts: ders["akts"],
+      value: `${module_id} ${name}`,
+      label: `${module_id} ${name}`,
+      moduleName: name,
+      moduleID: module_id,
+      credits: credits,
+      akts: ects,
     })
-  )
+  })
 
   const handleModuleChange = (module) => {
     var newModule = dersOptions.filter((ders) => ders.label === module.label)[0]
