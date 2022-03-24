@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const cms = axios.create({
-  baseURL: process.env.CMS_URL,
+  baseURL: process.env.APP_CMS_URL,
 })
 
 export const fetchDepartmentModules = async () => {
