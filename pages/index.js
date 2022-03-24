@@ -20,7 +20,7 @@ import { fetchDepartmentModules } from "../api"
 
 const Loader = () => {
   return (
-    <div className="flex flex-col justify-center items-center absolute top-0 left-0 h-screen z-50 bg-white w-screen">
+    <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-screen">
       <div className="h-[100px] w-[100] animate-spin">
         <Image src="/images/loader.svg" alt="loading" width="100" height="100" />
       </div>
@@ -69,8 +69,9 @@ export default function Home() {
       <span className="fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] z-[-1] opacity-20 pointer-events-none">
         <Image src={"/images/esogu-logo.png"} alt="esogu" width="200" height="200" />
       </span>
-      {isLoading && <Loader />}
       <main className=" w-full pt-[60px]">
+        {isLoading && <Loader />}
+
         {selectedModules.map((module) => (
           <ModuleCard
             key={module.id}
