@@ -4,7 +4,6 @@ import { useState, useEffect } from "react"
 import Select from "react-select"
 import { useModules } from "../../context/context"
 import { CloseCircleOutlined } from "@ant-design/icons"
-import dersler from "../../utils/mmf-bilgisayar-muhendisligi.json"
 import { customFilter, gradeOptions } from "../../utils/utilityFunctions"
 
 const ModuleCard = ({
