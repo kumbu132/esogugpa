@@ -16,18 +16,8 @@ import { useEffect, useState } from "react"
 import Head from "next/head"
 import Image from "next/image"
 import ModuleCard from "../components/ModuleCard/ModuleCard"
+import Loader from "../components/Loader/Loader"
 import { fetchDepartmentModules } from "../api"
-
-const Loader = () => {
-  return (
-    <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-screen">
-      <div className="h-[100px] w-[100] animate-spin">
-        <Image src="/images/loader.svg" alt="loading" width="100" height="100" />
-      </div>
-      <h1>Loading...</h1>
-    </div>
-  )
-}
 
 export default function Home() {
   const { selectedModules, setIsHomePage, departmentModules, setDepartmentModules } =
@@ -36,7 +26,6 @@ export default function Home() {
 
   useEffect(() => {
     setIsHomePage(true)
-    console.log({ ENV: process.env })
   }, [])
 
   useEffect(() => {
@@ -44,7 +33,6 @@ export default function Home() {
       const res = await fetchDepartmentModules()
       setDepartmentModules(res.data.data)
       setIsLoading(false)
-      console.log({ dep: res.data.data })
     }
 
     if (departmentModules.length) {

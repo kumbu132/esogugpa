@@ -1,4 +1,5 @@
 import axios from "axios"
+import FAQs from "../pages/faqs"
 
 const cms = axios.create({
   baseURL: "https://esogugpa-backend.herokuapp.com/",
@@ -28,4 +29,8 @@ export const fetchDepartmentModules = async () => {
     start += limit
   }
   return res
+}
+
+export const fetchFAQs = async (locale = "tr") => {
+  return cms.get(`api/faqs?locale=${locale}`)
 }

@@ -6,6 +6,7 @@ const ModulesContext = createContext(undefined)
 
 export function ModulesProvider({ children }) {
   const [departmentModules, setDepartmentModules] = useState([])
+  const [faqs, setFAQs] = useState([])
   const [selectedModules, setSelectedModules] = useState([])
   const [gpa, setGPA] = useState(0)
   const [modalIsOpen, setModalIsOpen] = useState(false)
@@ -199,6 +200,7 @@ export function ModulesProvider({ children }) {
         isHomePage,
         incompleteModulesWarning,
         departmentModules,
+        faqs,
         handleIncreaseModules,
         handleDecreaseModules,
         deleteModule,
@@ -209,6 +211,7 @@ export function ModulesProvider({ children }) {
         setIsHomePage,
         resetModules,
         setDepartmentModules,
+        setFAQs,
       }}
     >
       {children}
