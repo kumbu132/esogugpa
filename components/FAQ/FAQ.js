@@ -1,4 +1,5 @@
 import { CaretDownOutlined, CaretUpOutlined } from "@ant-design/icons"
+import ReactMarkdown from "react-markdown"
 
 const FAQ = ({ question, answer, id, active, setActive }) => {
   const handleFAQClick = () => {
@@ -15,7 +16,12 @@ const FAQ = ({ question, answer, id, active, setActive }) => {
         {active !== id && <CaretDownOutlined style={{ fontSize: "16px" }} />}
         {active === id && <CaretUpOutlined style={{ fontSize: "16px" }} />}
       </div>
-      {active === id && <p className="animate-moduleCard pl-3">{answer}</p>}
+      {active === id && (
+        <ReactMarkdown
+          className="animate-moduleCard pl-3"
+          children={answer}
+        ></ReactMarkdown>
+      )}
     </div>
   )
 }
