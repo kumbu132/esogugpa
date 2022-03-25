@@ -10,7 +10,10 @@ const FAQ = ({ question, answer, id, active, setActive }) => {
     }
   }
   return (
-    <div className="p-4 border cursor-pointer" onClick={handleFAQClick}>
+    <div
+      className="p-4 border-b cursor-pointer backdrop-blur-sm "
+      onClick={handleFAQClick}
+    >
       <div className="flex justify-between items-center">
         <p className="text-[16px] font-semibold">{question}</p>
         {active !== id && <CaretDownOutlined style={{ fontSize: "16px" }} />}
