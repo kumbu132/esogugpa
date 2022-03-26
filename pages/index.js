@@ -19,11 +19,19 @@ import ModuleCard from "../components/ModuleCard/ModuleCard"
 import Loader from "../components/Loader/Loader"
 import { fetchDepartmentModules } from "../api"
 
+const InitialMenu = ({ closeMenu }) => {
+  return (
+    <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-full">
+      MENU
+    </div>
+  )
+}
+
 export default function Home() {
   const { selectedModules, setIsHomePage, departmentModules, setDepartmentModules } =
     useModules()
   const [isLoading, setIsLoading] = useState(true)
-
+  const [firstLoad, setFirstLoad] = useState(true)
   useEffect(() => {
     setIsHomePage(true)
   }, [])
@@ -37,12 +45,17 @@ export default function Home() {
 
     if (departmentModules.length) {
       setIsLoading(false)
+      setFirstLoad(false)
     } else {
       try {
         fetchModules()
       } catch (error) {}
     }
   }, [])
+
+  const handleCloseInitialMenu = () => {
+    setFirstLoad(false)
+  }
 
   return (
     <div className="wrapper max-w-screen-md relative">
@@ -59,6 +72,9 @@ export default function Home() {
       </span>
       <main className=" w-full pt-[60px]">
         {isLoading && <Loader />}
+        {firstLoad && !isLoading && (
+          <InitialMenu closeMenu={handleCloseInitialMenu} />
+        )}
 
         {selectedModules.map((module) => (
           <ModuleCard
