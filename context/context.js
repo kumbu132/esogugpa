@@ -6,14 +6,28 @@ const ModulesContext = createContext(undefined)
 
 export function ModulesProvider({ children }) {
   const [departmentModules, setDepartmentModules] = useState([])
+  const [repeatModules, setRepeatModules] = useState([])
   const [faqs, setFAQs] = useState([])
   const [selectedModules, setSelectedModules] = useState([])
   const [gpa, setGPA] = useState(0)
+  const [oldGPA, setOldGPA] = useState(0)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [calculateIsClicked, setCalculateIsClicked] = useState(false)
   const [isHomePage, setIsHomePage] = useState(true)
   const [incompleteModulesWarning, setIncompleteModulesWarning] = useState(false)
+  const [cgpaMode, setCGPAMode] = useState(false)
+  const [hasRepeatModules, setHasRepeatModules] = useState(false)
 
+  const changeRepeatModules = (repeatModuleIDs) => {
+    let tmpRepeatModules = []
+    repeatModuleIDs.forEach((repeatMod) => {
+      const temp = departmentModules.filter(
+        (module) => module.attributes.module_id === repeatMod
+      )[0]
+      tmpRepeatModules.push(temp)
+    })
+    setRepeatModules(tmpRepeatModules)
+  }
   const handleIncreaseModules = () => {
     setCalculateIsClicked(false)
     setIncompleteModulesWarning(false)
@@ -195,12 +209,16 @@ export function ModulesProvider({ children }) {
       value={{
         selectedModules,
         gpa,
+        oldGPA,
         calculateIsClicked,
         modalIsOpen,
         isHomePage,
         incompleteModulesWarning,
         departmentModules,
         faqs,
+        repeatModules,
+        cgpaMode,
+        hasRepeatModules,
         handleIncreaseModules,
         handleDecreaseModules,
         deleteModule,
@@ -212,6 +230,10 @@ export function ModulesProvider({ children }) {
         resetModules,
         setDepartmentModules,
         setFAQs,
+        changeRepeatModules,
+        setOldGPA,
+        setCGPAMode,
+        setHasRepeatModules,
       }}
     >
       {children}

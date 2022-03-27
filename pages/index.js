@@ -17,15 +17,8 @@ import Head from "next/head"
 import Image from "next/image"
 import ModuleCard from "../components/ModuleCard/ModuleCard"
 import Loader from "../components/Loader/Loader"
+import InitialMenu from "../components/InitialMenu/InitialMenu"
 import { fetchDepartmentModules } from "../api"
-
-const InitialMenu = ({ closeMenu }) => {
-  return (
-    <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-full">
-      MENU
-    </div>
-  )
-}
 
 export default function Home() {
   const { selectedModules, setIsHomePage, departmentModules, setDepartmentModules } =
