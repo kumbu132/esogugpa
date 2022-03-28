@@ -6,14 +6,42 @@ const ModulesContext = createContext(undefined)
 
 export function ModulesProvider({ children }) {
   const [departmentModules, setDepartmentModules] = useState([])
+  const [repeatModules, setRepeatModules] = useState([])
+  const [previousTotalCredits, setPreviousTotalCredits] = useState(0)
   const [faqs, setFAQs] = useState([])
   const [selectedModules, setSelectedModules] = useState([])
   const [gpa, setGPA] = useState(0)
+  const [cgpa, setCGPA] = useState(0)
+
+  const [oldGPA, setOldGPA] = useState(0)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [calculateIsClicked, setCalculateIsClicked] = useState(false)
   const [isHomePage, setIsHomePage] = useState(true)
   const [incompleteModulesWarning, setIncompleteModulesWarning] = useState(false)
+  const [cgpaMode, setCGPAMode] = useState(false)
+  const [hasRepeatModules, setHasRepeatModules] = useState(false)
 
+  const changeRepeatModules = (repeatModuleIDs) => {
+    let tmpRepeatModules = []
+    repeatModuleIDs.forEach((repeatMod) => {
+      let temp = departmentModules.filter(
+        (module) => module.attributes.module_id === repeatMod
+      )[0]
+
+      const existingRepeatModule = repeatModules.find(
+        (mod) => mod.attributes.module_id === repeatMod
+      )
+
+      if (existingRepeatModule) {
+        temp = { ...temp, grade: existingRepeatModule.grade }
+      } else {
+        temp = { ...temp, grade: "" }
+      }
+
+      tmpRepeatModules.push(temp)
+    })
+    setRepeatModules(tmpRepeatModules)
+  }
   const handleIncreaseModules = () => {
     setCalculateIsClicked(false)
     setIncompleteModulesWarning(false)
@@ -169,6 +197,22 @@ export function ModulesProvider({ children }) {
         }
 
         setGPA(totalScore / totalCredits)
+
+        //calculateCGPA
+        if (cgpaMode) {
+          totalCredits += +previousTotalCredits
+          if (hasRepeatModules) {
+            repeatModules.forEach((module) => {
+              totalCredits -= +module.attributes.credits
+              totalScore -=
+                +module.attributes.credits * getLetterNoteWeight(module.grade)
+            })
+          }
+          totalScore += oldGPA * +previousTotalCredits
+
+          setCGPA(totalScore / totalCredits)
+        }
+
         setModalIsOpen(true)
       } else {
         var newModulesArray = selectedModules
@@ -195,12 +239,18 @@ export function ModulesProvider({ children }) {
       value={{
         selectedModules,
         gpa,
+        oldGPA,
         calculateIsClicked,
         modalIsOpen,
         isHomePage,
         incompleteModulesWarning,
         departmentModules,
         faqs,
+        repeatModules,
+        cgpaMode,
+        hasRepeatModules,
+        previousTotalCredits,
+        cgpa,
         handleIncreaseModules,
         handleDecreaseModules,
         deleteModule,
@@ -212,6 +262,12 @@ export function ModulesProvider({ children }) {
         resetModules,
         setDepartmentModules,
         setFAQs,
+        changeRepeatModules,
+        setOldGPA,
+        setCGPAMode,
+        setHasRepeatModules,
+        setPreviousTotalCredits,
+        setRepeatModules,
       }}
     >
       {children}

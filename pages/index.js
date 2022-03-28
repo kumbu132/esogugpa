@@ -17,13 +17,14 @@ import Head from "next/head"
 import Image from "next/image"
 import ModuleCard from "../components/ModuleCard/ModuleCard"
 import Loader from "../components/Loader/Loader"
+import InitialMenu from "../components/InitialMenu/InitialMenu"
 import { fetchDepartmentModules } from "../api"
 
 export default function Home() {
   const { selectedModules, setIsHomePage, departmentModules, setDepartmentModules } =
     useModules()
   const [isLoading, setIsLoading] = useState(true)
-
+  const [firstLoad, setFirstLoad] = useState(true)
   useEffect(() => {
     setIsHomePage(true)
   }, [])
@@ -37,12 +38,17 @@ export default function Home() {
 
     if (departmentModules.length) {
       setIsLoading(false)
+      setFirstLoad(false)
     } else {
       try {
         fetchModules()
       } catch (error) {}
     }
   }, [])
+
+  const handleCloseInitialMenu = () => {
+    setFirstLoad(false)
+  }
 
   return (
     <div className="wrapper max-w-screen-md relative">
@@ -59,6 +65,9 @@ export default function Home() {
       </span>
       <main className=" w-full pt-[60px]">
         {isLoading && <Loader />}
+        {firstLoad && !isLoading && (
+          <InitialMenu closeMenu={handleCloseInitialMenu} />
+        )}
 
         {selectedModules.map((module) => (
           <ModuleCard

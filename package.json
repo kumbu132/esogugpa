@@ -16,6 +16,7 @@
 		"react-ga": "^3.3.0",
 		"react-markdown": "^8.0.1",
 		"react-select": "4.3.1",
+		"react-switch": "^6.0.0",
 		"react-uuid": "^1.0.2"
 	},
 	"devDependencies": {
