@@ -1,8 +1,12 @@
-import { useState } from "react"
+//add input for previous toal accumulated credits
+//set validation
+
 import Select from "react-select"
 import Switch from "react-switch"
 import { useModules } from "../../context/context"
-import { customFilter } from "../../utils/utilityFunctions"
+import { customFilter, gradeOptions } from "../../utils/utilityFunctions"
+import { SaveOutlined, CloseCircleOutlined } from "@ant-design/icons"
+import { notification } from "antd"
 
 const InitialMenu = ({ closeMenu }) => {
   const {
@@ -15,6 +19,9 @@ const InitialMenu = ({ closeMenu }) => {
     setCGPAMode,
     hasRepeatModules,
     setHasRepeatModules,
+    previousTotalCredits,
+    setPreviousTotalCredits,
+    setRepeatModules,
   } = useModules()
   const dersOptions = []
 
@@ -51,17 +58,69 @@ const InitialMenu = ({ closeMenu }) => {
     changeRepeatModules(repeatModuleIDs)
   }
 
+  const openNotification = (placement) => {
+    notification.warning({
+      message: "Hata",
+      description: "Eksik alanları doldurun.",
+      placement,
+      closeIcon: <CloseCircleOutlined style={{ fontSize: "16px" }} />,
+    })
+  }
+
   const handleCalculate = () => {
     //validate form
-    //set global variables
-    //close initial menu
+    if (!cgpaMode) {
+      console.log("in !cga block")
+      closeMenu()
+      return
+    }
+    if (!hasRepeatModules) {
+      console.log("in !hasRepeatModules block")
+      closeMenu()
+      return
+    }
+
+    if (!repeatModules.length) {
+      console.log("in !repeatModules.length block")
+      openNotification("top")
+      return
+    }
+    repeatModules.forEach((module) => {
+      console.log({ module })
+      if (module.grade === "") {
+        openNotification("top")
+        console.log("here")
+        return
+      }
+    })
+
     closeMenu()
   }
+
+  const handleGradeChange = (moduleGrade, module) => {
+    const temp = { ...module, grade: moduleGrade.value }
+    setRepeatModules((prev) => {
+      return prev.map((repeatModule) => {
+        if (repeatModule.attributes.module_id === module.attributes.module_id) {
+          return temp
+        }
+        return repeatModule
+      })
+    })
+  }
+
   return (
     <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-full">
       <div className="h-screen max-w-screen-md w-full">
-        <div className="navbars flex justify-center items-center h-[60px] mb-1">
+        <div className="navbars flex justify-between items-center mb-1">
+          <span className="pl-3"></span>
           <h1 className="font-bold text-3xl">ESOGUGPA</h1>
+          <button
+            className=" hover:brightness-110 flex justify-between items-center pr-3"
+            onClick={handleCalculate}
+          >
+            <SaveOutlined style={{ fontSize: "18px" }} />
+          </button>
         </div>
         <div className="min-h-[60px] p-3 border-b border-t">
           <div className="flex justify-between items-center">
@@ -86,20 +145,35 @@ const InitialMenu = ({ closeMenu }) => {
             />
           </div>
           {cgpaMode && (
-            <div className="flex justify-between items-center my-1">
-              <p className="text-[16px] font-medium">Mevcut GNO'nuz:</p>
-              <input
-                type="number"
-                className="border w-[50px]"
-                max={4}
-                min={0}
-                defaultValue={oldGPA}
-                step={0.01}
-                onChange={(e) => {
-                  setOldGPA(e.target.value)
-                }}
-              />
-            </div>
+            <>
+              <div className="flex justify-between items-center my-1">
+                <p className="text-[16px] font-medium">Mevcut GNO'nuz:</p>
+                <input
+                  type="number"
+                  className="border w-[50px]"
+                  max={4}
+                  min={0}
+                  value={oldGPA}
+                  step={0.01}
+                  onChange={(e) => {
+                    setOldGPA(e.target.value)
+                  }}
+                />
+              </div>
+              <div className="flex justify-between items-center my-1">
+                <p className="text-[16px] font-medium">Başarılan kredi sayısı:</p>
+                <input
+                  type="number"
+                  className="border w-[50px]"
+                  min={0}
+                  value={previousTotalCredits}
+                  step={1}
+                  onChange={(e) => {
+                    setPreviousTotalCredits(e.target.value)
+                  }}
+                />
+              </div>
+            </>
           )}
         </div>
         {cgpaMode && (
@@ -134,18 +208,34 @@ const InitialMenu = ({ closeMenu }) => {
                   filterOption={customFilter}
                   onChange={handleSelectChange}
                 />
+                {repeatModules.length > 0 &&
+                  repeatModules.map((module) => {
+                    const { module_id, name } = module.attributes
+
+                    return (
+                      <div
+                        className="flex justify-between items-center my-1 px-2"
+                        key={module_id}
+                      >
+                        <p>{`${module_id} ${name}`}</p>
+                        <Select
+                          options={gradeOptions}
+                          onChange={(grade) => {
+                            handleGradeChange(grade, module)
+                          }}
+                          className="w-[110px] text-xs"
+                          isSearchable={false}
+                          placeholder="Harf notu"
+                          captureMenuScroll
+                          defaultValue={{ value: module.grade, label: module.grade }}
+                        />
+                      </div>
+                    )
+                  })}
               </form>
             )}
           </div>
         )}
-        <div className="flex justify-center items-center mt-4">
-          <button
-            className="p-3 rounded-md bg-orange-500 hover:brightness-110"
-            onClick={handleCalculate}
-          >
-            HESAPLA
-          </button>
-        </div>
       </div>
     </div>
   )

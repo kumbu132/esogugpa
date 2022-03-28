@@ -21,6 +21,7 @@ const SettingsMenu = ({ closeMenu }) => {
 
   const closeInitialMenu = () => {
     setInitialMenuIsOpen(false)
+    closeMenu()
   }
 
   return (

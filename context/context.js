@@ -7,6 +7,7 @@ const ModulesContext = createContext(undefined)
 export function ModulesProvider({ children }) {
   const [departmentModules, setDepartmentModules] = useState([])
   const [repeatModules, setRepeatModules] = useState([])
+  const [previousTotalCredits, setPreviousTotalCredits] = useState(0)
   const [faqs, setFAQs] = useState([])
   const [selectedModules, setSelectedModules] = useState([])
   const [gpa, setGPA] = useState(0)
@@ -21,9 +22,13 @@ export function ModulesProvider({ children }) {
   const changeRepeatModules = (repeatModuleIDs) => {
     let tmpRepeatModules = []
     repeatModuleIDs.forEach((repeatMod) => {
-      const temp = departmentModules.filter(
+      let temp = departmentModules.filter(
         (module) => module.attributes.module_id === repeatMod
       )[0]
+
+      if (!temp.grade) {
+        temp = { ...temp, grade: "" }
+      }
       tmpRepeatModules.push(temp)
     })
     setRepeatModules(tmpRepeatModules)
@@ -219,6 +224,7 @@ export function ModulesProvider({ children }) {
         repeatModules,
         cgpaMode,
         hasRepeatModules,
+        previousTotalCredits,
         handleIncreaseModules,
         handleDecreaseModules,
         deleteModule,
@@ -234,6 +240,8 @@ export function ModulesProvider({ children }) {
         setOldGPA,
         setCGPAMode,
         setHasRepeatModules,
+        setPreviousTotalCredits,
+        setRepeatModules,
       }}
     >
       {children}
