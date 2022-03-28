@@ -11,6 +11,8 @@ export function ModulesProvider({ children }) {
   const [faqs, setFAQs] = useState([])
   const [selectedModules, setSelectedModules] = useState([])
   const [gpa, setGPA] = useState(0)
+  const [cgpa, setCGPA] = useState(0)
+
   const [oldGPA, setOldGPA] = useState(0)
   const [modalIsOpen, setModalIsOpen] = useState(false)
   const [calculateIsClicked, setCalculateIsClicked] = useState(false)
@@ -195,6 +197,22 @@ export function ModulesProvider({ children }) {
         }
 
         setGPA(totalScore / totalCredits)
+
+        //calculateCGPA
+        if (cgpaMode) {
+          totalCredits += +previousTotalCredits
+          if (hasRepeatModules) {
+            repeatModules.forEach((module) => {
+              totalCredits -= +module.attributes.credits
+              totalScore -=
+                +module.attributes.credits * getLetterNoteWeight(module.grade)
+            })
+          }
+          totalScore += oldGPA * +previousTotalCredits
+
+          setCGPA(totalScore / totalCredits)
+        }
+
         setModalIsOpen(true)
       } else {
         var newModulesArray = selectedModules
@@ -232,6 +250,7 @@ export function ModulesProvider({ children }) {
         cgpaMode,
         hasRepeatModules,
         previousTotalCredits,
+        cgpa,
         handleIncreaseModules,
         handleDecreaseModules,
         deleteModule,

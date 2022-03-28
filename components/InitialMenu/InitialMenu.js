@@ -166,7 +166,7 @@ const InitialMenu = ({ closeMenu }) => {
                   value={previousTotalCredits}
                   step={1}
                   onChange={(e) => {
-                    setPreviousTotalCredits(e.target.value)
+                    setPreviousTotalCredits(+e.target.value)
                   }}
                 />
               </div>
