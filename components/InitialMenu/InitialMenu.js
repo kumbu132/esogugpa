@@ -107,7 +107,7 @@ const InitialMenu = ({ closeMenu }) => {
   }
 
   return (
-    <div className="flex flex-col justify-center items-center fixed mx-auto left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] h-screen z-50 bg-white w-full">
+    <div className="flex flex-col justify-center items-center fixed mx-auto top-0 left-0 h-screen z-50 bg-white w-full">
       <div className="h-screen max-w-screen-md w-full">
         <div className="navbars flex justify-between items-center mb-1">
           <span className="pl-3"></span>
