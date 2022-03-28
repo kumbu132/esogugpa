@@ -26,9 +26,16 @@ export function ModulesProvider({ children }) {
         (module) => module.attributes.module_id === repeatMod
       )[0]
 
-      if (!temp.grade) {
+      const existingRepeatModule = repeatModules.find(
+        (mod) => mod.attributes.module_id === repeatMod
+      )
+
+      if (existingRepeatModule) {
+        temp = { ...temp, grade: existingRepeatModule.grade }
+      } else {
         temp = { ...temp, grade: "" }
       }
+
       tmpRepeatModules.push(temp)
     })
     setRepeatModules(tmpRepeatModules)

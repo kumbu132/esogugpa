@@ -68,14 +68,13 @@ const InitialMenu = ({ closeMenu }) => {
   }
 
   const handleCalculate = () => {
+    let err = false
     //validate form
     if (!cgpaMode) {
-      console.log("in !cga block")
       closeMenu()
       return
     }
     if (!hasRepeatModules) {
-      console.log("in !hasRepeatModules block")
       closeMenu()
       return
     }
@@ -86,15 +85,13 @@ const InitialMenu = ({ closeMenu }) => {
       return
     }
     repeatModules.forEach((module) => {
-      console.log({ module })
       if (module.grade === "") {
         openNotification("top")
-        console.log("here")
-        return
+        err = true
       }
     })
 
-    closeMenu()
+    if (!err) closeMenu()
   }
 
   const handleGradeChange = (moduleGrade, module) => {
@@ -218,17 +215,34 @@ const InitialMenu = ({ closeMenu }) => {
                         key={module_id}
                       >
                         <p>{`${module_id} ${name}`}</p>
-                        <Select
-                          options={gradeOptions}
-                          onChange={(grade) => {
-                            handleGradeChange(grade, module)
-                          }}
-                          className="w-[110px] text-xs"
-                          isSearchable={false}
-                          placeholder="Harf notu"
-                          captureMenuScroll
-                          defaultValue={{ value: module.grade, label: module.grade }}
-                        />
+                        {module.grade === "" && (
+                          <Select
+                            options={gradeOptions}
+                            onChange={(grade) => {
+                              handleGradeChange(grade, module)
+                            }}
+                            className="w-[110px] text-xs"
+                            isSearchable={false}
+                            placeholder="Harf notu"
+                            captureMenuScroll
+                          />
+                        )}
+                        {module.grade !== "" && (
+                          <Select
+                            options={gradeOptions}
+                            onChange={(grade) => {
+                              handleGradeChange(grade, module)
+                            }}
+                            className="w-[110px] text-xs"
+                            isSearchable={false}
+                            placeholder="Harf notu"
+                            captureMenuScroll
+                            defaultValue={{
+                              value: module.grade,
+                              label: module.grade,
+                            }}
+                          />
+                        )}
                       </div>
                     )
                   })}
