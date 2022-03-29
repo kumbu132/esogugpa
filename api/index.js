@@ -12,7 +12,7 @@ export const fetchDepartmentModules = async () => {
   let res = []
   while (start <= total) {
     let tmp = await cms.get(
-      `api/modules?pagination[start]=${start}&pagination[limit]=${limit}`
+      `api/modules?pagination[start]=${start}&pagination[limit]=${limit}&sort=module_id%3Aasc`
     )
 
     res = res.data
