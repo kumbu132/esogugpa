@@ -1,6 +1,6 @@
 //add input for previous toal accumulated credits
 //set validation
-
+import { useState } from "react"
 import Select from "react-select"
 import Switch from "react-switch"
 import { useModules } from "../../context/context"
@@ -23,6 +23,11 @@ const InitialMenu = ({ closeMenu }) => {
     setPreviousTotalCredits,
     setRepeatModules,
   } = useModules()
+
+  const [prevTotalCreditsValue, setPrevTotalCreditsValue] =
+    useState(previousTotalCredits)
+  const [oldGPAValue, setOldGPAValue] = useState(oldGPA)
+
   const dersOptions = []
 
   departmentModules.map((ders) => {
@@ -74,8 +79,14 @@ const InitialMenu = ({ closeMenu }) => {
       closeMenu()
       return
     }
+
+    if (prevTotalCreditsValue === "" || oldGPAValue === "") {
+      openNotification("top")
+      return
+    }
+
     if (!hasRepeatModules) {
-      closeMenu()
+      !err && closeMenu()
       return
     }
 
@@ -86,12 +97,11 @@ const InitialMenu = ({ closeMenu }) => {
     }
     repeatModules.forEach((module) => {
       if (module.grade === "") {
-        openNotification("top")
         err = true
       }
     })
 
-    if (!err) closeMenu()
+    err ? openNotification("top") : closeMenu()
   }
 
   const handleGradeChange = (moduleGrade, module) => {
@@ -105,17 +115,26 @@ const InitialMenu = ({ closeMenu }) => {
       })
     })
   }
+  const handleOldGPAChange = (e) => {
+    setOldGPAValue(e)
+    setOldGPAValue(e)
+  }
+  const handlePrevTotalCreditsChange = (e) => {
+    setPrevTotalCreditsValue(e)
+    setPreviousTotalCredits(e)
+  }
 
   return (
-    <div className="flex flex-col justify-center items-center fixed mx-auto top-0 left-0 h-screen z-50 bg-white w-full">
-      <div className="h-screen max-w-screen-md w-full">
+    <div className="flex flex-col justify-center items-center absolute mx-auto top-0 left-0 min-h-screen z-50 bg-white w-full">
+      <div className="min-h-screen max-w-screen-md w-full">
         <div className="navbars flex justify-between items-center mb-1">
-          <span className="pl-3"></span>
+          <span className="pl-16" />
           <h1 className="font-bold text-3xl">ESOGUGPA</h1>
           <button
             className=" hover:brightness-110 flex justify-between items-center pr-3"
             onClick={handleCalculate}
           >
+            KAYDET
             <SaveOutlined style={{ fontSize: "18px" }} />
           </button>
         </div>
@@ -150,10 +169,10 @@ const InitialMenu = ({ closeMenu }) => {
                   className="border w-[50px]"
                   max={4}
                   min={0}
-                  value={oldGPA}
+                  value={oldGPAValue}
                   step={0.01}
                   onChange={(e) => {
-                    setOldGPA(e.target.value)
+                    handleOldGPAChange(+e.target.value)
                   }}
                 />
               </div>
@@ -163,10 +182,10 @@ const InitialMenu = ({ closeMenu }) => {
                   type="number"
                   className="border w-[50px]"
                   min={0}
-                  value={previousTotalCredits}
+                  value={prevTotalCreditsValue}
                   step={1}
                   onChange={(e) => {
-                    setPreviousTotalCredits(+e.target.value)
+                    handlePrevTotalCreditsChange(+e.target.value)
                   }}
                 />
               </div>
