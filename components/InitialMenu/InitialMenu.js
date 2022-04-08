@@ -1,12 +1,13 @@
 //add input for previous toal accumulated credits
 //set validation
-import { useState } from "react"
+import React, { useState } from "react"
 import Select from "react-select"
 import Switch from "react-switch"
 import { useModules } from "../../context/context"
 import { customFilter, gradeOptions } from "../../utils/utilityFunctions"
 import { SaveOutlined, CloseCircleOutlined } from "@ant-design/icons"
 import { notification } from "antd"
+import { createPopper } from "@popperjs/core"
 
 const InitialMenu = ({ closeMenu }) => {
   const {
@@ -23,6 +24,19 @@ const InitialMenu = ({ closeMenu }) => {
     setPreviousTotalCredits,
     setRepeatModules,
   } = useModules()
+
+  const [popoverShow, setPopoverShow] = React.useState(false)
+  const btnRef = React.createRef()
+  const popoverRef = React.createRef()
+  const openTooltip = () => {
+    createPopper(btnRef.current, popoverRef.current, {
+      placement: "left",
+    })
+    setPopoverShow(true)
+  }
+  const closeTooltip = () => {
+    setPopoverShow(false)
+  }
 
   const [prevTotalCreditsValue, setPrevTotalCreditsValue] =
     useState(previousTotalCredits)
@@ -117,7 +131,7 @@ const InitialMenu = ({ closeMenu }) => {
   }
   const handleOldGPAChange = (e) => {
     setOldGPAValue(e)
-    setOldGPAValue(e)
+    setOldGPA(e)
   }
   const handlePrevTotalCreditsChange = (e) => {
     setPrevTotalCreditsValue(e)
@@ -235,16 +249,37 @@ const InitialMenu = ({ closeMenu }) => {
                       >
                         <p>{`${module_id} ${name}`}</p>
                         {module.grade === "" && (
-                          <Select
-                            options={gradeOptions}
-                            onChange={(grade) => {
-                              handleGradeChange(grade, module)
-                            }}
-                            className="w-[110px] text-xs"
-                            isSearchable={false}
-                            placeholder="Harf notu"
-                            captureMenuScroll
-                          />
+                          <>
+                            <div
+                              onMouseEnter={openTooltip}
+                              onMouseLeave={closeTooltip}
+                              ref={btnRef}
+                            >
+                              <Select
+                                options={gradeOptions}
+                                onChange={(grade) => {
+                                  handleGradeChange(grade, module)
+                                }}
+                                className="w-[110px] text-xs"
+                                isSearchable={false}
+                                placeholder="Harf notu"
+                                captureMenuScroll
+                              />
+                            </div>
+                            <div
+                              className={
+                                (popoverShow ? "" : "hidden ") +
+                                "bg-blue-800 border-0 mr-3 block z-[100] font-normal leading-normal text-sm max-w-xs text-left no-underline break-words rounded-lg"
+                              }
+                              ref={popoverRef}
+                            >
+                              <div>
+                                <div className="bg-blueGray-600 text-white p-3 mb-0 border-b border-solid border-blueGray-100 rounded-t-lg">
+                                  Bu dersi en son aldığınızda aldığınız notu seçin
+                                </div>
+                              </div>
+                            </div>
+                          </>
                         )}
                         {module.grade !== "" && (
                           <Select

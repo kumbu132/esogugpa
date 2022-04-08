@@ -3,6 +3,7 @@ import {
   InfoCircleOutlined,
   MessageOutlined,
   TranslationOutlined,
+  ToolOutlined,
 } from "@ant-design/icons"
 import Image from "next/image"
 import InitialMenu from "../InitialMenu/InitialMenu"
@@ -43,6 +44,7 @@ const SettingsMenu = ({ closeMenu }) => {
             setInitialMenuIsOpen(true)
           }}
         >
+          <ToolOutlined style={{ fontSize: "16px" }} />
           <p className="px-4">Hesaplama modu değiştir</p>
         </div>
         {initalMenuIsOpen && <InitialMenu closeMenu={closeInitialMenu} />}
