@@ -105,7 +105,6 @@ const InitialMenu = ({ closeMenu }) => {
     }
 
     if (!repeatModules.length) {
-      console.log("in !repeatModules.length block")
       openNotification("top")
       return
     }
@@ -142,7 +141,7 @@ const InitialMenu = ({ closeMenu }) => {
     <div className="flex flex-col justify-center items-center absolute mx-auto top-0 left-0 min-h-screen z-50 bg-white w-full">
       <div className="min-h-screen max-w-screen-md w-full">
         <div className="navbars flex justify-between items-center mb-1">
-          <span className="pl-16" />
+          <span className="pl-20" />
           <h1 className="font-bold text-3xl">ESOGUGPA</h1>
           <button
             className=" hover:brightness-110 flex justify-between items-center pr-3"
@@ -153,6 +152,7 @@ const InitialMenu = ({ closeMenu }) => {
           </button>
         </div>
         <div className="min-h-[60px] p-3 border-b border-t">
+          <h2 className="font-bold text-xl w-full text-center">Gelişmiş Ayarlar</h2>
           <div className="flex justify-between items-center">
             <div className="description-container max-w-[70%] ">
               <p className="text-[16px] font-medium">{`HESAPLAMA MODU: ${
@@ -253,6 +253,8 @@ const InitialMenu = ({ closeMenu }) => {
                             <div
                               onMouseEnter={openTooltip}
                               onMouseLeave={closeTooltip}
+                              onTouchStart={openTooltip}
+                              onTouchEnd={closeTooltip}
                               ref={btnRef}
                             >
                               <Select

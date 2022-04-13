@@ -36,7 +36,7 @@ const ResultsModal = () => {
               GNO:{" "}
               <span
                 className={`${
-                  gpa >= 3.8
+                  cgpa >= 3.8
                     ? "AA"
                     : gpa >= 3.5
                     ? "BA"
